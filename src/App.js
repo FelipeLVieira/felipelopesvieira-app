@@ -1,0 +1,1 @@
+import React from 'react';\nimport { AppContainer, Footer, Header, MainContent, ThemeSwitcher } from './components';\nimport { animations } from './utils';\n\nconst App = () => (\n  <AppContainer>\n    <Header />\n    <ThemeSwitcher />\n    <MainContent animations={animations} />\n    <Footer />\n  </AppContainer>\n);\n\nexport default App;
