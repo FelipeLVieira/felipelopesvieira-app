@@ -1,0 +1,1 @@
+import React from 'react';\r\nimport Link from 'next/link';\r\n\r\nconst Navigation = () => (\r\n  <div className=\"nav-container flex justify-between items-center p-4 bgindergray text-white \">\r\n    <Link href=\"/\">Home</Link>\r\n    <Link href=\"/about\">About</Link>\r\n    <Link href=\"/contact\">Contact</Link>\r\n  </div>\r\n);\r\n\r\nexport default Navigation;
