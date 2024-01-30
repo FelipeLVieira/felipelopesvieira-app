@@ -1,0 +1,1 @@
+import React from 'react';\n\nconst MainContent = () => (\n  <div className=\"main-content\">\n    <h1>This is the Main Content</h1>\n    <p>Here we will display the main features of the website.</p>\n  </div>\n);\n\nexport default MainContent;
