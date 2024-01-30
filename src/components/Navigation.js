@@ -1,0 +1,1 @@
+import React from 'react';\nimport Link from 'next/link';\n\nconst Navigation = () => (\n  <nav className=\"navbar\">\n    <div className=\"navbar-content\">\n      <Link href=\"/\">Home</Link>\n      <Link href=\"/about\">About</Link>\n      <Link href=\"/contact\">Contact</Link>\n    </div>\n  </nav>\n);\n\nexport default Navigation;
