@@ -1,12 +1,12 @@
 "use client";
-import styles from './page.module.css'
-import ToggleButton from "@/app/components/ToggleButton";
-
 export default function Home() {
-
     return (
-        <main className={styles}>
-            <ToggleButton/>
-        </main>
-    )
+        <div>
+            <h1>Hello word</h1>
+            <p>This is a content to make our page longer</p>
+            <p>
+                Lorem Ipsum is simply dummy text ...
+            </p>
+        </div>
+    );
 }

@@ -1,0 +1,63 @@
+:root {
+    --background: white;
+    --foreground: black;
+    --primary-color: #007bff; /* Example primary color */
+    --secondary-color: #6c757d; /* Example secondary color */
+    --font-family: 'Arial', sans-serif; /* Example font */
+    --transition-duration: 0.3s; /* Transition duration for animations */
+}
+
+[data-theme='dark'] {
+    --background: black;
+    --foreground: white;
+    --primary-color: #66afe9; /* Adjusted primary color for dark theme */
+    --secondary-color: #adb5bd; /* Adjusted secondary color for dark theme */
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    transition: background-color var(--transition-duration);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    margin: 0.5em 0;
+}
+
+p {
+    line-height: 1.5;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-duration);
+}
+
+a:hover, a:focus {
+    color: var(--secondary-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color var(--transition-duration);
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    /* Responsive adjustments */
+    body {
+        padding: 10px;
+    }
+}
