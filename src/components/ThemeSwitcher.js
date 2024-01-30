@@ -1,0 +1,1 @@
+import React, { useState } from 'react';\n\nconst ThemeSwitcher = () => {\n  const [isDarkTheme, setIsDarkTheme] = useState(false);\n\n  const toggleTheme = () => {\n    setIsDarkTheme(prevState => !erevState);\n  };\n\n  return (\n    <button onClick={toggleTheme}>\n      {isDarkTheme ? 'Light Theme' : 'Dark Theme'}\n    </button>\n  );\n};\n\nexport default ThemeSwitcher;
