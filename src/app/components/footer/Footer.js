@@ -1,18 +1,28 @@
-// Footer.js
-import React from 'react';
-import styles from "@/app/styles/Footer.css";
+"use client";
+import { motion } from 'framer-motion';
+import Image from "next/image";
+import styles from "@/app/styles/Footer.css"; // Ensure the path matches your file structure
 
 export default function Footer() {
+    const containerVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+    };
+
     return (
-        <footer className="footer">
-            <div className="contact-me">
-                <h2>Contact Me</h2>
-                <p>If you have any questions or would like to get in touch, feel free to reach out:</p>
-                <ul>
-                    <li>Email: <a href="mailto:felipe.lv.90@gmail.com">felipe.lv.90@gmail.com</a></li>
-                    <li>Phone: <a href="tel:+13059062554">+1 305-906-2554</a></li>
-                </ul>
+        <motion.footer
+            className={`footer ${styles.footer}`}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+        >
+            <div className={`footer-content ${styles.footerContent}`}>
+                <p className={`footer-text ${styles.footerText}`}>&copy; {new Date().getFullYear()} felipelopesvieira.com. All rights reserved.</p>
+                <p className={`footer-text ${styles.footerText}`}>Made with Next.js, Vercel, Tailwind, PixiJS, and Framer Motion</p>
+                <div className={`footer-icons ${styles.footerIcons}`}>
+                    {/* Include your icons here, wrapped with the Image component */}
+                </div>
             </div>
-        </footer>
+        </motion.footer>
     );
 }

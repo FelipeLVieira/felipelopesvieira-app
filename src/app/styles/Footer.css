@@ -1,44 +1,53 @@
-/* Add this CSS to your global styles or a dedicated CSS file */
+/* Footer.css */
+.footer {
+    padding: 2rem 0;
+    border-top: 5px solid;
+    border-image: linear-gradient(to right, var(--primary-color), var(--secondary-color)) 2;
+    transition: background-color var(--transition-duration), border-image var(--transition-duration);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.footer-text {
+    font-family: var(--font-family);
+    text-align: center;
+    margin: 0;
+    color: inherit;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-icon {
+    transition: transform var(--transition-duration);
+}
+
+.footer-icon:hover {
+    transform: translateY(-5px);
+}
+
+/* Apply theme-specific colors */
+:root {
+    --footer-background: #f0f0f0; /* Light theme background */
+    --footer-foreground: #333; /* Light theme text */
+}
+
+[data-theme='dark'] .footer {
+    --footer-background: #333; /* Dark theme background */
+    --footer-foreground: #f0f0f0; /* Dark theme text */
+}
 
 .footer {
-    background-color: #333; /* Background color for the footer */
-    color: #fff; /* Text color for the footer */
-    padding: 20px; /* Add spacing inside the footer */
-    text-align: center; /* Center-align the content */
-}
-
-.contact-me {
-    max-width: 600px; /* Limit the width of the contact section */
-    margin: 0 auto; /* Center the section horizontally */
-}
-
-.contact-me h2 {
-    font-size: 24px; /* Set the title font size */
-}
-
-.contact-me p {
-    font-size: 16px; /* Set the paragraph font size */
-    margin-bottom: 20px; /* Add spacing below the paragraph */
-}
-
-.contact-me ul {
-    list-style: none; /* Remove bullet points from the list */
-    padding: 0;
-}
-
-.contact-me li {
-    font-size: 18px; /* Set the list item font size */
-    margin-bottom: 10px; /* Add spacing between list items */
-}
-
-.contact-me a {
-    color: var(--primary-color); /* Link color */
-    text-decoration: none; /* Remove underline from links */
-    transition: color 0.3s; /* Add a smooth color transition on hover */
-
-    /* Add additional styles if needed */
-}
-
-.contact-me a:hover {
-    color: var(--secondary-color); /* Change link color on hover */
+    background-color: var(--footer-background);
+    color: var(--footer-foreground);
 }
