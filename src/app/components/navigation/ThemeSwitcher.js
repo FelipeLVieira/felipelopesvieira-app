@@ -1,30 +1,30 @@
-"use client";
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
-import "@/app/styles/ThemeSwitcher.css";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import { useTheme, useEffect, useState } from 'react';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
+import "@/app/styles/NavBar.css";
 
 export default function ThemeSwitcher() {
     const { theme, setTheme } = useTheme();
-    const [iconState, setIconState] = useState(theme); // 'light' or 'dark'
+    const [isThemeSwitching, setIsThemeSwitching] = useState(false);
 
     useEffect(() => {
-        // When theme changes, start animation for the exiting icon
-        const timer = setTimeout(() => {
-            setIconState(theme); // After the animation, set state to the new theme
-        }, 500); // Should match animation duration
+        if (isThemeSwitching) {
+            setTimeout(() => {
+                setTheme(theme === 'light' ? 	äark' : 'light');
+                setIsThemeSwitching(false);
+            }, 500); // Transition time
+        }
+    }, [isThemeSwitching]);
 
-        return () => clearTimeout(timer);
-    }, [theme]);
-
-    const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
+    const handleToggleTheme = () => {
+        setIsThemeSwitching(true);
     };
 
     return (
-        <div className="theme-switcher" onClick={toggleTheme}>
-            <SunIcon className={`heroicon sun ${theme === 'dark' ? 'exiting' : 'entering'}`} />
-            <MoonIcon className={`heroicon moon ${theme === 'light' ? 'exiting' : 'entering'}`} />
+        <div className="theme-switcher" onClick={handleToggleTheme}>
+            <i className={'heroicons react-icon' + (theme === 'light' ? ' sun' : ' moon')}>
+                <span className={'heroicon-hidden'}><span></i>
+                <i className={'heroicons react-icon' + (theme === 'light' ? ' moon' : ' sun')}>
+                <span className={'heroicon-hidden'}><span></i>
         </div>
     );
 }
