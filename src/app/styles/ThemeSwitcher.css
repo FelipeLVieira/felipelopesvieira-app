@@ -1,10 +1,108 @@
-.theme-switcher {
-    background: none;
-    border: none;
+/* Updated ThemeSwitcher.css */
+
+.theme-switcher-container {
+    position: relative;
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    z-index: 100;
 }
 
-.theme-switcher:hover {
-    transform: scale(1.1);
+.icon-stack {
+    position: relative;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    vertical-align: middle;
+    animation-duration: 0.5s; /* Animation duration */
+    animation-timing-function: ease-out; /* Timing function */
+    animation-fill-mode: both;
+    transition: opacity 0.3s, transform 0.3s; /* Transition for opacity and transform */
+}
+
+.icon-stack-icon {
+    width: 100%;
+    text-align: center;
+    opacity: 1; /* Initial opacity set to 1 */
+    transition: opacity 0.3s, color 0.3s; /* Add transitions for opacity and color */
+    position: relative; /* Position for pseudo-elements */
+    color: #414141; /* Initial color */
+    animation-name: colorAnimation; /* Add infinite color animation */
+    animation-duration: 5s; /* Set animation duration */
+    animation-iteration-count: infinite; /* Make the animation infinite */
+}
+
+@keyframes colorAnimation {
+    0% {
+        color: #414141; /* Initial color */
+    }
+    50% {
+        color: #000000; /* Target color */
+    }
+    100% {
+        color: #414141; /* Back to initial color */
+    }
+}
+
+.theme-switcher-container .hidden {
+    opacity: 0;
+}
+
+.theme-switcher-container:hover .icon-stack-icon {
+    color: #ffb400; /* Change color on hover */
+}
+
+.icon-stack-icon::before,
+.icon-stack-icon::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 100, 45, 0.7) 50%, transparent 100%); /* Gradient for shine effect */
+    pointer-events: none; /* Disable pointer events on pseudo-elements */
+    transform: translateX(-100%); /* Initial position outside of the icon */
+    transition: transform 1s; /* Transition for shine animation */
+}
+
+/* Add shine animation on hover */
+.theme-switcher-container:hover .icon-stack-icon::before,
+.theme-switcher-container:hover .icon-stack-icon::after {
+    transform: translateX(100%); /* Move the shine in */
+}
+
+.theme-switcher-container.animating .icon-stack {
+    animation-name: fadeInOut; /* Keep this animation */
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+/* Add the following animation for the 'animating' class */
+.theme-switcher-container.animating .icon-stack-icon::before,
+.theme-switcher-container.animating .icon-stack-icon::after {
+    animation-name: shineInOut; /* Shine in and out when animating */
+}
+
+@keyframes shineInOut {
+    0%, 100% {
+        transform: translateX(-100%); /* Move the shine out */
+    }
+    50% {
+        transform: translateX(100%); /* Move the shine in */
+    }
+}
+
+.icon-stack-1x,
+.icon-stack-2x {
+    width: 100%;
+    text-align: center;
 }

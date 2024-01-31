@@ -1,17 +1,17 @@
 :root {
-    --background: white;
-    --foreground: black;
-    --primary-color: #007bff; /* Example primary color */
-    --secondary-color: #6c757d; /* Example secondary color */
+    --background: #f0f0f0; /* Updated background color */
+    --foreground: #333; /* Updated foreground color */
+    --primary-color: #007BFF; /* Updated primary color */
+    --secondary-color: #FF8800; /* Updated secondary color */
     --font-family: 'Arial', sans-serif; /* Example font */
     --transition-duration: 0.3s; /* Transition duration for animations */
 }
 
 [data-theme='dark'] {
-    --background: black;
-    --foreground: white;
-    --primary-color: #66afe9; /* Adjusted primary color for dark theme */
-    --secondary-color: #adb5bd; /* Adjusted secondary color for dark theme */
+    --background: #333; /* Updated background color for dark theme */
+    --foreground: #f0f0f0; /* Updated foreground color for dark theme */
+    --primary-color: #FF8800; /* Updated primary color for dark theme */
+    --secondary-color: #66FF66; /* Updated secondary color for dark theme */
 }
 
 body {
