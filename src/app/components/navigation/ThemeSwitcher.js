@@ -6,7 +6,7 @@ import {MoonIcon, SunIcon} from "@heroicons/react/24/solid";
 import NoSsr from '@/app/components/NoSsr';
 
 export default function ThemeSwitcher() {
-    const { theme, setTheme } = useTheme();
+    const {theme, setTheme} = useTheme();
     const [iconState, setIconState] = useState(theme);
     const [isAnimating, setIsAnimating] = useState(false);
 
@@ -36,9 +36,9 @@ export default function ThemeSwitcher() {
                     onAnimationEnd={handleAnimationEnd} // Add onAnimationEnd event
                 >
                     {iconState === 'light' ? (
-                        <SunIcon className={`icon-stack-icon`} />
+                        <SunIcon className={`icon-stack-icon`}/>
                     ) : (
-                        <MoonIcon className={`icon-stack-icon`} />
+                        <MoonIcon className={`icon-stack-icon`}/>
                     )}
                 </div>
             </div>

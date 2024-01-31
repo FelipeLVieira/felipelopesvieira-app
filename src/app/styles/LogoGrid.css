@@ -1,0 +1,23 @@
+.logo-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allow logos to wrap into new rows */
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.logo-item {
+    margin: 10px;
+    width: 120px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 1;
+}

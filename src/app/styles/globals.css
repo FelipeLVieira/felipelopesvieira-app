@@ -61,3 +61,33 @@ button:hover {
         padding: 10px;
     }
 }
+
+.main-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row; /* Arrange child elements in columns */
+    align-items: center;
+    justify-content: center;
+}
+
+.framer-motion-container {
+    z-index: 1000;
+}
+
+.pixi-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    /* Your styles for main content go here */
+}

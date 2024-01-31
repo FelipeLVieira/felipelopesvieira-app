@@ -35,13 +35,13 @@
 
 @keyframes colorAnimation {
     0% {
-        color: #414141; /* Initial color */
+        color: #ffffff; /* Initial color */
     }
     50% {
         color: #000000; /* Target color */
     }
     100% {
-        color: #414141; /* Back to initial color */
+        color: #ffffff; /* Back to initial color */
     }
 }
 
