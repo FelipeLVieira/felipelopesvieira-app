@@ -1,3 +1,4 @@
+"use client";
 import {motion} from 'framer-motion';
 import ncllogo from '@/app/assets/ncl-cruise.png';
 import axielllogo from '@/app/assets/axiell_group_logo.jpg';

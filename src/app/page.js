@@ -1,91 +1,85 @@
 "use client";
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
+import * as PIXI from 'pixi.js';
 
-// Dynamically import LogoGrid with SSR disabled
-const LogoGrid = dynamic(() => import('@/app/components/LogoGrid'), {ssr: false});
+const LogoGrid = dynamic(() => import('./components/LogoGrid'), { ssr: false });
 
 const Home = () => {
     const pixiContainerRef = useRef(null);
-    const appRef = useRef(null); // Use ref to persist the PixiJS app instance
+    const appRef = useRef(null);
+    const bunnyRef = useRef(null); // Use a ref to store the bunny for access in other effects
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const PIXI = require('pixi.js');
+        if (pixiContainerRef.current) {
+            const width = pixiContainerRef.current.offsetWidth || 800; // Fallback width
+            const height = pixiContainerRef.current.offsetHeight || 600; // Fallback height
 
             const app = new PIXI.Application({
-                background: getComputedStyle(document.documentElement).getPropertyValue('--primary-color'),
-                resizeTo: window,
+                backgroundAlpha: 0,
+                width,
+                height,
                 resolution: window.devicePixelRatio || 1,
             });
             appRef.current = app;
             pixiContainerRef.current.appendChild(app.view);
 
-            const loader = new PIXI.Loader();
-            const textureIds = ['flowerTop', 'eggHead'];
+            const onResize = () => {
+                const { offsetWidth, offsetHeight } = pixiContainerRef.current;
+                app.renderer.resize(offsetWidth, offsetHeight);
+            };
 
-            for (const textureId of textureIds) {
-                if (PIXI.utils.TextureCache[textureId]) {
-                    PIXI.utils.TextureCache[textureId].destroy(true);
-                }
-            }
+            window.addEventListener('resize', onResize);
 
-            loader.add('flowerTop', 'https://pixijs.com/assets/flowerTop.png');
-            loader.add('eggHead', 'https://pixijs.com/assets/eggHead.png');
+            app.loader.add('bunny', 'https://pixijs.com/assets/bunny.png').load((loader, resources) => {
+                const bunny = new PIXI.Sprite(resources.bunny.texture);
+                bunny.anchor.set(0.5);
+                bunny.x = width / 2;
+                bunny.y = height / 2;
+                bunny.vx = 0; // Initial velocity
+                bunny.vy = 0; // Initial velocity
+                bunny.interactive = true;
+                bunny.buttonMode = true;
 
-            loader.load((loader, resources) => {
-                const flower = new PIXI.Sprite(resources.flowerTop.texture);
-                const eggHead = new PIXI.Sprite(resources.eggHead.texture);
+                bunny.on('pointerdown', () => {
+                    bunny.vx = (Math.random() - 0.5) * 10;
+                    bunny.vy = (Math.random() - 0.5) * 10;
+                });
 
-                // Ensure appRef.current and its screen property are available
-                if (appRef.current && appRef.current.screen) {
-                    flower.anchor.set(0.5);
-                    flower.x = appRef.current.screen.width / 2;
-                    flower.y = appRef.current.screen.height / 2;
-                    flower.visible = false;
+                app.stage.addChild(bunny);
+                bunnyRef.current = bunny;
 
-                    eggHead.anchor.set(0.5);
-                    eggHead.x = appRef.current.screen.width / 2;
-                    eggHead.y = appRef.current.screen.height / 2;
-                    eggHead.visible = true;
+                app.ticker.add(() => {
+                    if (!bunnyRef.current) return;
 
-                    appRef.current.stage.addChild(flower);
-                    appRef.current.stage.addChild(eggHead);
+                    const bunny = bunnyRef.current;
+                    bunny.x += bunny.vx;
+                    bunny.y += bunny.vy;
 
-                    flower.interactive = true;
-                    eggHead.interactive = true;
-
-                    flower.on('mousedown', (e) => {
-                        e.data.originalEvent.preventDefault();
-                    });
-
-                    eggHead.on('mousedown', (e) => {
-                        e.data.originalEvent.preventDefault();
-                    });
-
-                    appRef.current.stage.interactive = true;
-                    appRef.current.stage.on('pointerdown', () => {
-                        flower.visible = !flower.visible;
-                        eggHead.visible = !eggHead.visible;
-                    });
-                }
+                    // Bounds checking logic
+                    if (bunny.x - bunny.width / 2 < 0 || bunny.x + bunny.width / 2 > app.renderer.width) {
+                        bunny.vx *= -1;
+                    }
+                    if (bunny.y - bunny.height / 2 < 0 || bunny.y + bunny.height / 2 > app.renderer.height) {
+                        bunny.vy *= -1;
+                    }
+                });
             });
-        }
 
-        return () => {
-            if (appRef.current) {
-                appRef.current.destroy(true, {children: true, texture: true, baseTexture: true});
-                appRef.current = null;
-            }
-        };
+            return () => {
+                window.removeEventListener('resize', onResize);
+                app.destroy(true, { children: true, texture: true, baseTexture: true });
+            };
+        }
     }, []);
+
+    // The second useEffect for resize can be removed as it is redundant now
+    // The logic is handled in the first useEffect
 
     return (
         <div className="main-container">
-            <div ref={pixiContainerRef} className="pixi-container"/>
-            <div className="framer-motion-container">
-                <LogoGrid/>
-            </div>
+            <div ref={pixiContainerRef} className="pixi-container" />
+            <LogoGrid />
         </div>
     );
 };
