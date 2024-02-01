@@ -29,6 +29,33 @@ const Home = () => {
                 app.renderer.resize(offsetWidth, offsetHeight);
             };
 
+            const createParticles = (x, y, container) => {
+                for (let i = 0; i < 10; i++) {
+                    const particle = new PIXI.Graphics();
+                    particle.beginFill(0x007BFF);
+                    particle.drawCircle(0, 0, 5);
+                    particle.endFill();
+                    particle.x = x;
+                    particle.y = y;
+
+                    // Randomize the particle's velocity
+                    const vx = Math.random() * 10 - 5;
+                    const vy = Math.random() * 10 - 5;
+
+                    app.ticker.add(() => {
+                        particle.x += vx;
+                        particle.y += vy;
+                        particle.scale.x *= 0.95;
+                        particle.scale.y *= 0.95;
+                        if (particle.scale.x < 0.1) {
+                            container.removeChild(particle); // Remove particle when it's small enough
+                        }
+                    });
+
+                    container.addChild(particle);
+                }
+            };
+
             window.addEventListener('resize', onResize);
 
             app.loader.add('bunny', 'https://pixijs.com/assets/bunny.png').load((loader, resources) => {
@@ -42,9 +69,16 @@ const Home = () => {
                 bunny.buttonMode = true;
 
                 bunny.on('pointerdown', () => {
-                    bunny.vx = (Math.random() - 0.5) * 10;
-                    bunny.vy = (Math.random() - 0.5) * 10;
-                });
+                    bunny.vx = (Math.random() - 0.5) * 5;
+                    bunny.vy = (Math.random() - 0.5) * 5;
+
+                    // Animation effect
+                    bunny.scale.set(2); // Make the bunny slightly larger
+                    setTimeout(() => {
+                        bunny.scale.set(1); // Return to original size after a short delay
+                    }, 100); // Adjust delay as needed
+                    createParticles(bunny.x, bunny.y, app.stage);
+                })
 
                 app.stage.addChild(bunny);
                 bunnyRef.current = bunny;
@@ -56,12 +90,24 @@ const Home = () => {
                     bunny.x += bunny.vx;
                     bunny.y += bunny.vy;
 
-                    // Bounds checking logic
-                    if (bunny.x - bunny.width / 2 < 0 || bunny.x + bunny.width / 2 > app.renderer.width) {
-                        bunny.vx *= -1;
+                    // Adjust the bounds checking to consider the bunny's size
+                    const halfWidth = bunny.width / 2;
+                    const halfHeight = bunny.height / 2;
+
+                    if (bunny.x - halfWidth < 0) {
+                        bunny.x = halfWidth; // Reset position to the left edge
+                        bunny.vx *= -1; // Reverse velocity
+                    } else if (bunny.x + halfWidth > app.renderer.width) {
+                        bunny.x = app.renderer.width - halfWidth; // Reset position to the right edge
+                        bunny.vx *= -1; // Reverse velocity
                     }
-                    if (bunny.y - bunny.height / 2 < 0 || bunny.y + bunny.height / 2 > app.renderer.height) {
-                        bunny.vy *= -1;
+
+                    if (bunny.y - halfHeight < 0) {
+                        bunny.y = halfHeight; // Reset position to the top edge
+                        bunny.vy *= -1; // Reverse velocity
+                    } else if (bunny.y + halfHeight > app.renderer.height) {
+                        bunny.y = app.renderer.height - halfHeight; // Reset position to the bottom edge
+                        bunny.vy *= -1; // Reverse velocity
                     }
                 });
             });
