@@ -1,10 +1,14 @@
 "use client";
 import dynamic from 'next/dynamic';
-import {motion} from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
 import LogoGrid from "@/app/components/LogoGrid";
+import {useEffect, useState} from "react";
+import TypewriterEffect from "@/app/components/TypewriterEffect";
 
 const PhaserGame = dynamic(() => import('@/app/components/PhaserGame'), {
     ssr: false,
+    // Loading the component immediately without waiting for the TypewriterEffect to finish
+    loading: () => <div style={{ height: '500px' }}>Loading ...</div>
 });
 
 const fadeInVariants = {
@@ -17,33 +21,36 @@ const fadeInVariants = {
 };
 
 const Home = () => {
+    const [isTypingComplete, setIsTypingComplete] = useState(false);
+    // Additional state to control the animation
+    const [animateContent, setAnimateContent] = useState("hidden");
+
+    useEffect(() => {
+        if (isTypingComplete) {
+            // Trigger animations after the typewriter effect completes
+            setAnimateContent("visible");
+        }
+    }, [isTypingComplete]);
+
+    const onTypingComplete = () => {
+        setIsTypingComplete(true);
+    };
+
     return (
-        <div className="main-container">
+        <>
+            <TypewriterEffect onComplete={onTypingComplete} />
+            {/* The main content will start its animation based on animateContent state */}
             <motion.div
+                className="main-container"
                 initial="hidden"
-                animate="visible"
+                animate={animateContent}
                 variants={fadeInVariants}
-                transition={{duration: 0.8, delay: 0.2}}
             >
                 <PhaserGame width={1000} height={500}/>
-            </motion.div>
-            <motion.h1
-                initial="hidden"
-                animate="visible"
-                variants={fadeInVariants}
-                transition={{duration: 0.8, delay: 0.4}}
-            >
-                Companies I've worked with
-            </motion.h1>
-            <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={fadeInVariants}
-                transition={{duration: 0.8, delay: 0.6}}
-            >
+                <h1>Companies I've worked with</h1>
                 <LogoGrid/>
             </motion.div>
-        </div>
+        </>
     );
 };
 

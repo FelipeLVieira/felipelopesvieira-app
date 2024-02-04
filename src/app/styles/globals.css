@@ -2,7 +2,7 @@
     --background: #f0f0f0; /* Updated background color */
     --foreground: #333; /* Updated foreground color */
     --primary-color: #007BFF; /* Updated primary color */
-    --secondary-color: #FF8800; /* Updated secondary color */
+    --secondary-color: #fe6e00; /* Updated secondary color */
     --font-family: 'Arial', sans-serif; /* Example font */
     --transition-duration: 0.3s; /* Transition duration for animations */
 }
@@ -10,7 +10,7 @@
 [data-theme='dark'] {
     --background: #333; /* Updated background color for dark theme */
     --foreground: #f0f0f0; /* Updated foreground color for dark theme */
-    --primary-color: #FF8800; /* Updated primary color for dark theme */
+    --primary-color: #fe6e00; /* Updated primary color for dark theme */
     --secondary-color: #66FF66; /* Updated secondary color for dark theme */
 }
 
