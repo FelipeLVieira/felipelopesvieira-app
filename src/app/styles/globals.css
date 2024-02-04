@@ -80,11 +80,20 @@ button:hover {
     z-index: 0;
     gap: 150px;
     margin-bottom: 100px;
-
 }
 
 
 .content {
     position: relative;
     /* Your styles for main content go here */
+}
+
+/* Media Queries for Smaller Devices */
+@media screen and (max-width: 768px) {
+    .main-container {
+        gap: 20px; /* Adjust the gap for smaller devices */
+        margin-bottom: 20px; /* Adjust the margin for smaller devices */
+    }
+
+    /* Add more media query adjustments as needed */
 }
