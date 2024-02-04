@@ -1,9 +1,25 @@
 "use client";
-import React, {useEffect} from 'react';
+import React, { useEffect, useCallback } from 'react';
 import 'phaser';
 import logo from '@/app/assets/flv-logo-main.png';
 
-const PhaserGame = ({width = 800, height = 600}) => {
+const PhaserGame = ({ width = 800, height = 600 }) => {
+    // Wrap each function with useCallback
+    const preload = useCallback(function() {
+        this.load.image('logo', logo.src); // Adjust with your assets
+    }, []);
+
+    const create = useCallback(function() {
+        const logo = this.physics.add.image(width / 4, height / 4, 'logo');
+        logo.setVelocity(100, 100);
+        logo.setBounce(1, 1);
+        logo.setCollideWorldBounds(true);
+    }, [width, height]);
+
+    const update = useCallback(function() {
+        // Update logic here
+    }, []);
+
     useEffect(() => {
         const config = {
             type: Phaser.AUTO,
@@ -12,14 +28,14 @@ const PhaserGame = ({width = 800, height = 600}) => {
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: {y: 0},
+                    gravity: { y: 0 },
                     debug: false,
                 },
             },
             scene: {
-                preload,
-                create,
-                update,
+                preload: preload,
+                create: create,
+                update: update,
             },
             parent: 'phaser-game-container',
             backgroundColor: '#8a8a8a',
@@ -27,24 +43,11 @@ const PhaserGame = ({width = 800, height = 600}) => {
 
         const game = new Phaser.Game(config);
 
+        // Cleanup function
         return () => game.destroy(true);
-    }, []);
+    }, [preload, create, update, width, height]); // Include dependencies here
 
-    function preload() {
-        this.load.image('logo', logo.src); // Adjust with your assets
-    }
-
-    function create() {
-        const logo = this.physics.add.image(width / 4, height / 4, 'logo');
-        logo.setVelocity(100, 100);
-        logo.setBounce(1, 1);
-        logo.setCollideWorldBounds(true);
-    }
-
-    function update() {
-    }
-
-    return <div id="phaser-game-container" style={{width, height}}/>;
+    return <div id="phaser-game-container" style={{ width, height }} />;
 };
 
 export default PhaserGame;

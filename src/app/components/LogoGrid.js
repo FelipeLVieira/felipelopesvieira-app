@@ -28,6 +28,19 @@ const logoAnimation = {
     },
 };
 
+const titleAnimation = {
+    animate: {
+        y: [0, -10, 0], // slight vertical movement
+        transition: {
+            duration: 2.5,
+            ease: "easeInOut",
+            repeat: Infinity, // Use repeat for continuous loop
+            repeatType: "loop", // Ensure it loops the animation
+        },
+    },
+};
+
+
 const LogoGrid = ({isTypingComplete}) => {
     const [logoVariant, setLogoVariant] = useState('initial'); // Initial state
 
@@ -40,19 +53,28 @@ const LogoGrid = ({isTypingComplete}) => {
 
 
     return (
-        <div className="logo-grid">
-            {logos.map(logo => (
-                <motion.div
-                    key={logo.id}
-                    whileHover="hover"
-                    initial="initial"
-                    animate={logoVariant} // Controlled by state
-                    variants={logoAnimation}
-                    className="logo-item"
-                >
-                    <Image src={logo.src} alt={logo.alt} priority={true} width={120} height={120}/>
-                </motion.div>
-            ))}
+        <div className="logo-grid-section">
+            <motion.h2
+                className="section-title"
+                animate={titleAnimation.animate}
+            >
+                Companies I&apos;ve worked with
+            </motion.h2>
+            <div className="logo-grid">
+                {logos.map(logo => (
+                    <motion.div
+                        key={logo.id}
+                        whileHover="hover"
+                        initial="initial"
+                        animate={logoVariant}
+                        variants={logoAnimation}
+                        className="logo-item"
+                    >
+                        {/* Remove the layout prop from the Image component */}
+                        <Image src={logo.src} alt={logo.alt} priority={true} width={120} height={120}/>
+                    </motion.div>
+                ))}
+            </div>
         </div>
     );
 };

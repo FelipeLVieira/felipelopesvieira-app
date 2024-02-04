@@ -56,13 +56,20 @@ button:hover {
 }
 
 @keyframes gradientBackground {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .main-container {
     /* Ensure the container fills the viewport and is positioned relative for z-index management */
+    padding-top: 50px;
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -71,7 +78,7 @@ button:hover {
     justify-content: center;
     position: relative;
     z-index: 0;
-    gap: 200px;
+    gap: 150px;
     margin-bottom: 100px;
 
 }

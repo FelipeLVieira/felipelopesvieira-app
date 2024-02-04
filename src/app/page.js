@@ -8,7 +8,7 @@ import TypewriterEffect from "@/app/components/TypewriterEffect";
 const PhaserGame = dynamic(() => import('@/app/components/PhaserGame'), {
     ssr: false,
     // Loading the component immediately without waiting for the TypewriterEffect to finish
-    loading: () => <div style={{ height: '500px' }}>Loading ...</div>
+    loading: () => <div style={{height: '500px'}}>Loading ...</div>
 });
 
 const fadeInVariants = {
@@ -16,9 +16,10 @@ const fadeInVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: {duration: 1, ease: "easeOut"} // Adjust for a softer transition
+        transition: {duration: 1, ease: 'easeOut'} // Adjust for a softer transition
     },
 };
+
 
 const Home = () => {
     const [isTypingComplete, setIsTypingComplete] = useState(false);
@@ -38,7 +39,7 @@ const Home = () => {
 
     return (
         <>
-            <TypewriterEffect onComplete={onTypingComplete} />
+            <TypewriterEffect onComplete={onTypingComplete}/>
             {/* The main content will start its animation based on animateContent state */}
             <motion.div
                 className="main-container"
@@ -47,7 +48,6 @@ const Home = () => {
                 variants={fadeInVariants}
             >
                 <PhaserGame width={1000} height={500}/>
-                <h1>Companies I've worked with</h1>
                 <LogoGrid isTypingComplete={onTypingComplete}/>
             </motion.div>
         </>
