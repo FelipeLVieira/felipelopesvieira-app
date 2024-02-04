@@ -90,8 +90,7 @@ button:hover {
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
-    .main-container {
-        gap: 20px; /* Adjust gap for smaller screens */
-        margin-bottom: 30px; /* Adjust margin for smaller screens */
+    .typewriter-container {
+        font-size: 1rem; /* Adjust font size for mobile devices */
     }
 }
