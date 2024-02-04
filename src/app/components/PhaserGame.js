@@ -1,6 +1,6 @@
 "use client";
 import React, {useEffect} from 'react';
-import Phaser from 'phaser';
+import 'phaser';
 import logo from '@/app/assets/flv-logo-main.png';
 
 const PhaserGame = ({width = 800, height = 600}) => {

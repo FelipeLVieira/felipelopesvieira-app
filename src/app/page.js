@@ -48,7 +48,7 @@ const Home = () => {
             >
                 <PhaserGame width={1000} height={500}/>
                 <h1>Companies I've worked with</h1>
-                <LogoGrid/>
+                <LogoGrid isTypingComplete={onTypingComplete}/>
             </motion.div>
         </>
     );

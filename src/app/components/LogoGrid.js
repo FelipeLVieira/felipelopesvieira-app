@@ -8,6 +8,7 @@ import articlelogo from '@/app/assets/LogoGrid/article-logo.png';
 import b2wlogo from '@/app/assets/LogoGrid/b2w-logo.png';
 import Image from "next/image";
 import styles from "@/app/styles/LogoGrid.css";
+import {useEffect, useState} from "react";
 
 const logos = [
     {id: 1, src: axielllogo, alt: 'Axiell'},
@@ -27,13 +28,25 @@ const logoAnimation = {
     },
 };
 
-const LogoGrid = () => {
+const LogoGrid = ({isTypingComplete}) => {
+    const [logoVariant, setLogoVariant] = useState('initial'); // Initial state
+
+    // Assuming `isTypingComplete` is passed down to LogoGrid or managed globally
+    useEffect(() => {
+        if (isTypingComplete) {
+            setLogoVariant('animate'); // Trigger the animation
+        }
+    }, [isTypingComplete]);
+
+
     return (
         <div className="logo-grid">
             {logos.map(logo => (
                 <motion.div
                     key={logo.id}
                     whileHover="hover"
+                    initial="initial"
+                    animate={logoVariant} // Controlled by state
                     variants={logoAnimation}
                     className="logo-item"
                 >

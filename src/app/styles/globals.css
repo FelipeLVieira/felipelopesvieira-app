@@ -1,17 +1,17 @@
 :root {
-    --background: #f0f0f0; /* Updated background color */
-    --foreground: #333; /* Updated foreground color */
-    --primary-color: #007BFF; /* Updated primary color */
-    --secondary-color: #fe6e00; /* Updated secondary color */
-    --font-family: 'Arial', sans-serif; /* Example font */
-    --transition-duration: 0.3s; /* Transition duration for animations */
+    --background: #f0f0f0; /* Light mode background */
+    --foreground: #333; /* Light mode text */
+    --primary-color: #007BFF; /* Light mode primary color */
+    --secondary-color: #4CAF50; /* Light mode secondary color */
+    --font-family: 'Arial', sans-serif;
+    --transition-duration: 0.3s;
 }
 
 [data-theme='dark'] {
-    --background: #333; /* Updated background color for dark theme */
-    --foreground: #f0f0f0; /* Updated foreground color for dark theme */
-    --primary-color: #fe6e00; /* Updated primary color for dark theme */
-    --secondary-color: #66FF66; /* Updated secondary color for dark theme */
+    --background: #121212; /* Dark mode background */
+    --foreground: #e0e0e0; /* Dark mode text */
+    --primary-color: #BB86FC; /* Dark mode primary color */
+    --secondary-color: #03DAC6; /* Dark mode secondary color */
 }
 
 body {
@@ -20,7 +20,7 @@ body {
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    transition: background-color var(--transition-duration);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -55,20 +55,27 @@ button:hover {
     background-color: var(--secondary-color);
 }
 
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 .main-container {
+    /* Ensure the container fills the viewport and is positioned relative for z-index management */
+    min-height: 100vh;
+    width: 100%;
     display: flex;
-    flex-direction: column; /* Change from row to column */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Ensure it at least fills the viewport vertically */
-    padding: 20px; /* Add some padding around */
-    gap: 100px; /* This adds space between flex items */
-    margin-bottom: 50px; /* Adds margin to the bottom of all direct children */
+    position: relative;
+    z-index: 0;
+    gap: 200px;
+    margin-bottom: 100px;
+
 }
 
-
-.framer-motion-container {
-}
 
 .content {
     position: relative;
