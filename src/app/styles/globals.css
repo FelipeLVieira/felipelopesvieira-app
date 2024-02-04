@@ -88,12 +88,10 @@ button:hover {
     /* Your styles for main content go here */
 }
 
-/* Media Queries for Smaller Devices */
-@media screen and (max-width: 768px) {
+/* Media query for smaller screens */
+@media (max-width: 768px) {
     .main-container {
-        gap: 20px; /* Adjust the gap for smaller devices */
-        margin-bottom: 20px; /* Adjust the margin for smaller devices */
+        gap: 20px; /* Adjust gap for smaller screens */
+        margin-bottom: 30px; /* Adjust margin for smaller screens */
     }
-
-    /* Add more media query adjustments as needed */
 }
