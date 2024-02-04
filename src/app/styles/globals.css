@@ -55,39 +55,22 @@ button:hover {
     background-color: var(--secondary-color);
 }
 
-@media (max-width: 768px) {
-    /* Responsive adjustments */
-    body {
-        padding: 10px;
-    }
-}
-
 .main-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
     display: flex;
-    flex-direction: row; /* Arrange child elements in columns */
+    flex-direction: column; /* Change from row to column */
     align-items: center;
     justify-content: center;
+    min-height: 100vh; /* Ensure it at least fills the viewport vertically */
+    padding: 20px; /* Add some padding around */
+    gap: 100px; /* This adds space between flex items */
+    margin-bottom: 50px; /* Adds margin to the bottom of all direct children */
 }
+
 
 .framer-motion-container {
-    z-index: 1000;
-}
-
-.pixi-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
 }
 
 .content {
     position: relative;
-    z-index: 1;
     /* Your styles for main content go here */
 }
