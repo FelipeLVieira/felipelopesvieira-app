@@ -39,6 +39,13 @@ const PhaserGame = ({ width = 800, height = 600 }) => {
             },
             parent: 'phaser-game-container',
             backgroundColor: '#8a8a8a',
+            scale: {
+                mode: Phaser.Scale.RESIZE, // Resize the game canvas
+                autoCenter: Phaser.Scale.CENTER_BOTH, // Center the game on the screen
+            },
+            input: {
+                touch: true, // Enable touch screen input
+            },
         };
 
         const game = new Phaser.Game(config);
