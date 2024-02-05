@@ -7,6 +7,10 @@
 }
 
 .logo-grid-section {
+    border-top: 2px solid #eaeaea; /* Light border top for definition, adjust as needed */
+    border-bottom: 2px solid #eaeaea; /* Light border bottom, adjust as needed */
+    position: relative; /* Ensure it's positioned relatively within the page */
+    z-index: 10; /* Higher z-index to ensure it appears on top of the PhaserGame */
     padding: 50px 0;
     background-color: #f7f7f7; /* Light grey background, adjust as needed */
     border-top: 2px solid #eaeaea; /* Light border top for definition, adjust as needed */
@@ -36,7 +40,7 @@
 .logo-item img {
     width: 100%; /* Full width of the parent */
     height: auto; /* Maintain aspect ratio */
-    opacity: 0.85; /* Slightly transparent logos */
+    opacity: 1; /* Adjust opacity for better visibility over the PhaserGame */
     transition: opacity 0.3s ease; /* Smooth transition for hover effect */
 }
 

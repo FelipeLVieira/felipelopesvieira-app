@@ -42,13 +42,18 @@ const Home = () => {
             <TypewriterEffect onComplete={onTypingComplete}/>
             {/* The main content will start its animation based on animateContent state */}
             <motion.div
-                className="main-container"
+                className="main-container" // Ensure this has relative positioning in CSS
                 initial="hidden"
                 animate={animateContent}
                 variants={fadeInVariants}
+                style={{position: 'relative'}} // Added inline for demonstration
             >
-                <PhaserGame width={1000} height={500}/>
-                <LogoGrid isTypingComplete={onTypingComplete}/>
+                {/* PhaserGame as background */}
+                <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}>
+                    <PhaserGame/>
+                </div>
+                {/* Other content overlays the PhaserGame */}
+                <LogoGrid isTypingComplete={isTypingComplete}/>
             </motion.div>
         </>
     );

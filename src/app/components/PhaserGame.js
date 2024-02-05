@@ -3,7 +3,7 @@ import React, { useEffect, useCallback } from 'react';
 import 'phaser';
 import logo from '@/app/assets/flv-logo-main.png';
 
-const PhaserGame = ({ width = 800, height = 600 }) => {
+const PhaserGame = () => {
     // Wrap each function with useCallback
     const preload = useCallback(function() {
         this.load.image('logo', logo.src); // Adjust with your assets
@@ -14,7 +14,7 @@ const PhaserGame = ({ width = 800, height = 600 }) => {
         logo.setVelocity(100, 100);
         logo.setBounce(1, 1);
         logo.setCollideWorldBounds(true);
-    }, [width, height]);
+    }, []);
 
     const update = useCallback(function() {
         // Update logic here
@@ -23,8 +23,8 @@ const PhaserGame = ({ width = 800, height = 600 }) => {
     useEffect(() => {
         const config = {
             type: Phaser.AUTO,
-            width,
-            height,
+            parent: 'phaser-game-container',
+            backgroundColor: '#8a8a8a',
             physics: {
                 default: 'arcade',
                 arcade: {
@@ -33,28 +33,41 @@ const PhaserGame = ({ width = 800, height = 600 }) => {
                 },
             },
             scene: {
-                preload: preload,
-                create: create,
-                update: update,
+                preload: function() {
+                    this.load.image('logo', logo.src);
+                },
+                create: function() {
+                    const logo = this.physics.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'logo');
+                    logo.setVelocity(100, 100);
+                    logo.setBounce(1, 1);
+                    logo.setCollideWorldBounds(true);
+                },
+                update: function() {
+                    // Update logic here
+                },
             },
-            parent: 'phaser-game-container',
-            backgroundColor: '#8a8a8a',
             scale: {
-                mode: Phaser.Scale.RESIZE, // Resize the game canvas
-                autoCenter: Phaser.Scale.CENTER_BOTH, // Center the game on the screen
+                mode: Phaser.Scale.RESIZE,
+                autoCenter: Phaser.Scale.CENTER_BOTH,
             },
             input: {
-                touch: true, // Enable touch screen input
+                touch: true,
             },
         };
 
         const game = new Phaser.Game(config);
 
-        // Cleanup function
-        return () => game.destroy(true);
-    }, [preload, create, update, width, height]); // Include dependencies here
+        const resizeGame = () => game.scale.resize(window.innerWidth, window.innerHeight);
+        window.addEventListener('resize', resizeGame);
 
-    return <div id="phaser-game-container" style={{ width, height }} />;
+        // Cleanup function
+        return () => {
+            window.removeEventListener('resize', resizeGame);
+            game.destroy(true);
+        };
+    }, [preload, create, update]); // Include dependencies here
+
+    return <div id="phaser-game-container" />;
 };
 
 export default PhaserGame;
