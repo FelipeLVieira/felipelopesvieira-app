@@ -1,12 +1,28 @@
 .navbar {
+    background-color: var(--primary-color); /* Use the global variable for background color */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--primary-color); /* Use the global variable for background color */
-    padding: 0.5rem 1rem;
+    padding: 0 20px; /* Example padding, adjust as needed */
 }
 
 .navbar h1 {
     color: white;
     font-size: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+}
+
+.social-icon {
+    font-size: 40px; /* Icon size, adjust as needed */
+    color: var(--background); /* Icon color, adjust as needed */
+    margin-right: 10px; /* Space between icons */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.social-icon:hover {
+    color: var(--foreground); /* Highlight color on hover, adjust to match your brand colors */
 }
