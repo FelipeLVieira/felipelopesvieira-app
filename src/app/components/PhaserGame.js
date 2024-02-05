@@ -1,64 +1,53 @@
 "use client";
 import React, {useEffect, useCallback, useState} from 'react';
 import 'phaser';
-import logo from '@/app/assets/flv-logo-main.png';
 import {useTheme} from "next-themes";
+import logo from '@/app/assets/flv-logo-main.png';
 
 const PhaserGame = () => {
-    const theme =  useTheme();
-    const [ backgroundColor, setBackgroundColor] = useState(theme === 'dark' ? '#000000' : '#ffffff');
-    const [config, setConfig] = useState({});
+    const theme = useTheme();
+    const [backgroundColor, setBackgroundColor] = useState(theme === 'dark' ? '#ffffff' : '#000000');
+    const [game, setGame] = useState(null);
 
-    // Wrap each function with useCallback
-    const preload = useCallback(function() {
-        this.load.image('logo', logo.src); // Adjust with your assets
+    const preload = useCallback(function () {
+        this.load.image('logo', logo.src); // Adjust with the correct path
     }, []);
 
-    const create = useCallback(function() {
+    const create = useCallback(function () {
+        const logo = this.physics.add.image(this.cameras.main.width / 2, this.cameras.main.height / 2, 'logo');
+        logo.setVelocity(100, 100);
+        logo.setBounce(1, 1);
+        logo.setCollideWorldBounds(true);
+        logo.setScale(0.5, 0.5);
     }, []);
 
-    const update = useCallback(function() {
+    const update = useCallback(function () {
         // Update logic here
     }, []);
 
     useEffect(() => {
+        if (game) {
+            game.destroy(true);
+        }
 
-        if(theme === 'dark') {
+        if (theme.theme === 'dark') {
+            setBackgroundColor('#ffffff');
+        } else {
             setBackgroundColor('#000000');
         }
-        else {
-            setBackgroundColor( '#ffffff');
-        }
 
-        setConfig( {
+        const config = {
             type: Phaser.AUTO,
             parent: 'phaser-game-container',
             backgroundColor: backgroundColor,
             physics: {
                 default: 'arcade',
                 arcade: {
-                    gravity: { y: 0 },
+                    gravity: {y: 0},
                     debug: false,
                 },
             },
-            scene: {
-                preload: function() {
-                    this.load.image('logo', logo.src);
-                },
-                create: function() {
-                    const logo = this.physics.add.image(this.cameras.main.width/4, this.cameras.main.height/4, 'logo');
-                    logo.setVelocity(100, 100);
-                    logo.setBounce(1, 1);
-                    logo.setCollideWorldBounds(true);
-                    logo.setScale(0.5, 0.5);
-
-
-                },
-                update: function() {
-                    // Update logic here
-                    this.backgroundColor = theme === 'dark' ? '#000000' : '#ffffff'; // Dark theme background color
-                },
-            },
+            scene: {preload, create, update},
             scale: {
                 mode: Phaser.Scale.RESIZE,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -66,21 +55,15 @@ const PhaserGame = () => {
             input: {
                 touch: true,
             },
-        });
-
-        const game = new Phaser.Game(config);
-
-        const resizeGame = () => game.scale.resize(window.innerWidth, window.innerHeight);
-        window.addEventListener('resize', resizeGame);
-
-        // Cleanup function
-        return () => {
-            window.removeEventListener('resize', resizeGame);
-            game.destroy(true);
         };
-    }, [preload, create, update]); // Include dependencies here
 
-    return <div id="phaser-game-container" style={{ width: '100%', height: '100%' }} />;
+        const newGame = new Phaser.Game(config);
+        setGame(newGame);
+
+        return () => newGame?.destroy(true);
+    }, [theme.theme]); // React to theme changes
+
+    return <div id="phaser-game-container" style={{width: '100%', height: '100%'}}/>;
 };
 
 export default PhaserGame;

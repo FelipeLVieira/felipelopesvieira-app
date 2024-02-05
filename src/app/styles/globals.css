@@ -4,7 +4,7 @@
     --primary-color: #007BFF; /* Light mode primary color */
     --secondary-color: #4CAF50; /* Light mode secondary color */
     --font-family: 'Arial', sans-serif;
-    --transition-duration: 0.3s;
+    --transition-duration: 0.5s;
 }
 
 [data-theme='dark'] {
@@ -14,14 +14,22 @@
     --secondary-color: #03DAC6; /* Dark mode secondary color */
 }
 
+
 body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    transition: background-color var(--transition-duration), color var(--transition-duration);
 }
+
+/* Apply transitions to all elements for color-related properties */
+*, *::before, *::after {
+    transition: color var(--transition-duration),
+    background-color var(--transition-duration),
+    border-color var(--transition-duration);
+}
+
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
@@ -53,18 +61,6 @@ button {
 
 button:hover {
     background-color: var(--secondary-color);
-}
-
-@keyframes gradientBackground {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 .main-container {
