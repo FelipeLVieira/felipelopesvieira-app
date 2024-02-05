@@ -15,13 +15,13 @@ const NavBar = () => {
 
             {/* Social Links */}
             <div className="social-links">
-                <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+                <a href="https://linkedin.com/in/felipelv" target="_blank" rel="noopener noreferrer">
                     <FaLinkedinIn className="social-icon" />
                 </a>
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/FelipeLVieira" target="_blank" rel="noopener noreferrer">
                     <FaGithub className="social-icon" />
                 </a>
-                <a href="https://www.youtube.com/channel/yourchannel" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.youtube.com/@fullstackdev_1" target="_blank" rel="noopener noreferrer">
                     <FaYoutube className="social-icon" />
                 </a>
             </div>
