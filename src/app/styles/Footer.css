@@ -1,11 +1,14 @@
 /* Footer.css */
 .footer {
+    height: 10vh;
+    width: 100vw;
     opacity: 1;
     display: flex;
     padding: 2rem 0;
     border-top: 5px solid;
     border-image: linear-gradient(to right, var(--primary-color), var(--secondary-color)) 2;
-    transition: background-color var(--transition-duration), border-image var(--transition-duration);
+    background-color: var(--footer-background);
+    color: var(--footer-foreground);
 }
 
 .footer-content {
@@ -30,26 +33,11 @@
     gap: 1rem;
 }
 
-.footer-icon {
-    transition: transform var(--transition-duration);
-}
-
 .footer-icon:hover {
     transform: translateY(-5px);
-}
-
-/* Apply theme-specific colors */
-:root {
-    --footer-background: #f0f0f0; /* Light theme background */
-    --footer-foreground: #333; /* Light theme text */
 }
 
 [data-theme='dark'] .footer {
     --footer-background: #333; /* Dark theme background */
     --footer-foreground: #f0f0f0; /* Dark theme text */
-}
-
-.footer {
-    background-color: var(--footer-background);
-    color: var(--footer-foreground);
 }

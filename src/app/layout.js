@@ -1,9 +1,9 @@
 "use client";
-import Navbar from "@/app/components/navigation/NavBar";
 import {Providers} from './providers'
-import Footer from "@/app/components/footer/Footer";
+import Footer from "@/app/components/Footer/Footer";
+import Navbar from "@/app/components/navigation/NavBar";
+import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
 import globals from "@/app/styles/globals.css";
-import TypewriterEffect from "@/app/components/TypewriterEffect";
 import {useState} from "react";
 
 globals;

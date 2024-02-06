@@ -36,9 +36,13 @@ export default function ThemeSwitcher() {
                     onAnimationEnd={handleAnimationEnd} // Add onAnimationEnd event
                 >
                     {iconState === 'light' ? (
-                        <SunIcon className={`icon-stack-icon`}/>
+                        <div>
+                            <SunIcon className={`icon-stack-icon`}/>
+                        </div>
                     ) : (
-                        <MoonIcon className={`icon-stack-icon`}/>
+                        <div>
+                            <MoonIcon className={`icon-stack-icon`}/>
+                        </div>
                     )}
                 </div>
             </div>

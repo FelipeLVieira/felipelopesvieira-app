@@ -1,5 +1,5 @@
 "use client";
-import {motion} from 'framer-motion';
+import {motion, useAnimation} from 'framer-motion';
 import ncllogo from '@/app/assets/LogoGrid/ncl-cruise.png';
 import axielllogo from '@/app/assets/LogoGrid/axiell_group_logo.png';
 import ibmlogo from '@/app/assets/LogoGrid/ibm-logo.png';
@@ -23,56 +23,51 @@ const logoAnimation = {
     initial: {scale: 0.8, opacity: 0},
     animate: {scale: 1, opacity: 1},
     hover: {scale: 1.1, opacity: 1},
-    transition: {
-        duration: 0.5,
-    },
 };
 
 const titleAnimation = {
-    animate: {
-        y: [0, -10, 0], // slight vertical movement
-        transition: {
-            duration: 2.5,
-            ease: "easeInOut",
-            repeat: Infinity, // Use repeat for continuous loop
-            repeatType: "loop", // Ensure it loops the animation
-        },
-    },
+    animate: {y: [0, -10, 0], transition: {duration: 2.5, ease: "easeInOut", repeat: Infinity}},
 };
 
+const titleBackgroundAnimation = {
+    animate: {backgroundColor: ["rgba(255, 255, 255, 0.1)", "rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.1)"],
+        transition: {duration: 4, ease: "easeInOut", repeat: Infinity, repeatType: "mirror"}},
+};
 
 const LogoGrid = ({isTypingComplete}) => {
-    const [logoVariant, setLogoVariant] = useState('initial'); // Initial state
+    const [logoVariant, setLogoVariant] = useState('initial');
 
-    // Assuming `isTypingComplete` is passed down to LogoGrid or managed globally
     useEffect(() => {
         if (isTypingComplete) {
-            setLogoVariant('animate'); // Trigger the animation
+            setLogoVariant('animate');
         }
     }, [isTypingComplete]);
 
-
     return (
         <div className="logo-grid-section">
-            <motion.h2
-                className="section-title"
-                animate={titleAnimation.animate}
-            >
-                Companies I&apos;ve worked with
+            <motion.div
+                className="title-background"
+                initial="initial"
+                animate="animate"
+                variants={titleBackgroundAnimation}
+            />
+            <motion.h2 variants={titleAnimation} animate="animate">
+                <div className="section-title">
+                    Companies I&apos;ve worked with
+                </div>
             </motion.h2>
             <div className="logo-grid">
                 {logos.map(logo => (
                     <motion.div
                         key={logo.id}
-                        whileHover="hover"
-                        initial="initial"
-                        animate={logoVariant}
-                        variants={logoAnimation}
+                        whileHover={{scale: 1.1, opacity: 1}} // Direct inline variant for debugging
+                        initial={{scale: 0.8, opacity: 0}}
+                        animate={{scale: 1, opacity: 1}} // Inline styles for direct testing
                         className="logo-item"
                     >
-                        {/* Remove the layout prop from the Image component */}
                         <Image src={logo.src} alt={logo.alt} priority={true} width={120} height={120}/>
                     </motion.div>
+
                 ))}
             </div>
         </div>

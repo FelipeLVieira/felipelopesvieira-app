@@ -18,11 +18,13 @@
 
 .social-icon {
     font-size: 40px; /* Icon size, adjust as needed */
-    color: var(--background); /* Icon color, adjust as needed */
+    color: var(--foreground); /* Icon color, adjust as needed */
     margin-right: 10px; /* Space between icons */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    transition: color 0.3s ease-in-out, transform 0.3s ease; /* Smooth transition for hover effect */
+    display: inline-block; /* Allows the transform property to work */
 }
 
 .social-icon:hover {
-    color: var(--foreground); /* Highlight color on hover, adjust to match your brand colors */
+    color: var(--secondary-color); /* Change color on hover */
+    transform: scale(1.4); /* Slightly increase the icon size */
 }

@@ -1,59 +1,44 @@
 "use client";
 import dynamic from 'next/dynamic';
-import {AnimatePresence, motion} from 'framer-motion';
-import LogoGrid from "@/app/components/LogoGrid";
+import {motion} from 'framer-motion';
+import LogoGrid from "@/app/components/LogoGrid/LogoGrid";
 import {useEffect, useState} from "react";
-import TypewriterEffect from "@/app/components/TypewriterEffect";
+import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
 
-const PhaserGame = dynamic(() => import('@/app/components/PhaserGame'), {
+const PhaserGame = dynamic(() => import('@/app/components/PhaserGame/PhaserGame'), {
     ssr: false,
     // Loading the component immediately without waiting for the TypewriterEffect to finish
-    loading: () => <div style={{height: '500px'}}>Loading ...</div>
+    loading: () => <div style={{ height: '500px' }}>Loading ...</div>
 });
 
 const fadeInVariants = {
     hidden: {opacity: 0, y: 50},
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {duration: 1, ease: 'easeOut'} // Adjust for a softer transition
-    },
+    visible: {opacity: 1, y: 0, transition: {duration: 1, ease: 'easeOut'}}
 };
-
 
 const Home = () => {
     const [isTypingComplete, setIsTypingComplete] = useState(false);
-    // Additional state to control the animation
-    const [animateContent, setAnimateContent] = useState("hidden");
 
     useEffect(() => {
         if (isTypingComplete) {
-            // Trigger animations after the typewriter effect completes
-            setAnimateContent("visible");
+            // Adjust content visibility based on typing completion
         }
     }, [isTypingComplete]);
 
-    const onTypingComplete = () => {
-        setIsTypingComplete(true);
-    };
+    const onTypingComplete = () => setIsTypingComplete(true);
 
     return (
         <>
-            <TypewriterEffect onComplete={onTypingComplete}/>
-            {/* The main content will start its animation based on animateContent state */}
+            <TypewriterEffect onComplete={onTypingComplete} />
             <motion.div
-                className="main-container" // Ensure this has relative positioning in CSS
+                className="main-container"
                 initial="hidden"
-                animate={animateContent}
+                animate={isTypingComplete ? "visible" : "hidden"}
                 variants={fadeInVariants}
-                style={{position: 'relative'}} // Added inline for demonstration
             >
-                {/* PhaserGame as background */}
-                <div style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}>
-                    <PhaserGame/>
-                </div>
-                {/* Other content overlays the PhaserGame */}
-                <LogoGrid isTypingComplete={isTypingComplete}/>
+                {/* PhaserGame component is displayed first, followed by LogoGrid */}
+                <PhaserGame />
+                <LogoGrid isTypingComplete={isTypingComplete} />
             </motion.div>
         </>
     );

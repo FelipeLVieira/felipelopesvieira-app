@@ -3,18 +3,22 @@
     text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
-    color: #333; /* Or any color that fits your design */
+    color: var(--foreground); /* Change color to white for better visibility on a dark background */
+    position: relative;
 }
 
 .logo-grid-section {
-    border-top: 2px solid #eaeaea; /* Light border top for definition, adjust as needed */
-    border-bottom: 2px solid #eaeaea; /* Light border bottom, adjust as needed */
-    position: relative; /* Ensure it's positioned relatively within the page */
-    z-index: 10; /* Higher z-index to ensure it appears on top of the PhaserGame */
-    padding: 50px 0;
-    background-color: #f7f7f7; /* Light grey background, adjust as needed */
-    border-top: 2px solid #eaeaea; /* Light border top for definition, adjust as needed */
-    border-bottom: 2px solid #eaeaea; /* Light border bottom, adjust as needed */
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    border-top: 2px solid var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    position: relative; /* Stack on top of absolute elements */
+    padding: 20px 20px 20px;
 }
 
 .logo-grid {
@@ -22,10 +26,13 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px; /* Add some padding inside the grid */
+    margin: 0 auto; /* This centers the .logo-grid within its parent */
+    padding: 20px;
+    box-sizing: border-box; /* Ensures padding does not add to the total width */
+    border: 2px solid var(--secondary-color); /* Add border to logo grid */
+    animation: glowing-border 2s infinite; /* Apply the glowing border animation */
 }
+
 
 .logo-item {
     margin: 10px;
@@ -44,6 +51,14 @@
     transition: opacity 0.3s ease; /* Smooth transition for hover effect */
 }
 
-.logo-item:hover img {
-    opacity: 1; /* Full opacity on hover */
+@keyframes glowing-border {
+    0% {
+        box-shadow: 0 0 5px #fff;
+    }
+    50% {
+        box-shadow: 0 0 20px #fff;
+    }
+    100% {
+        box-shadow: 0 0 5px #fff;
+    }
 }
