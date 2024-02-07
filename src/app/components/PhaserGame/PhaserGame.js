@@ -19,21 +19,11 @@ const PhaserGame = () => {
         return color;
     };
 
-    const getRandomName = () => `Player ${Math.floor(Math.random() * 1000)}`;
-
     const getRandomPosition = (gameWidth, gameHeight) => ({
         x: Math.floor(Math.random() * gameWidth),
         y: Math.floor(Math.random() * gameHeight),
     });
 
-    const connectWebSocket = () => {
-        wsRef.current = new WebSocket('ws://localhost:8080');
-
-        wsRef.current.onopen = () => console.log('Connected to the WebSocket server');
-        wsRef.current.onmessage = (event) => console.log('Message from server:', event.data);
-        wsRef.current.onerror = (error) => console.log('WebSocket error:', error);
-        wsRef.current.onclose = () => console.log('Disconnected from the WebSocket server');
-    };
 
     const initializePhaserGame = () => {
         const preload = function () {
@@ -81,11 +71,18 @@ const PhaserGame = () => {
             });
 
             scene.physics.add.collider(playerBody, logoImage, () => {
+                // Before setting a new alpha, clear the old delayed call if it exists.
+                if (scene.flashEffectTimer) {
+                    scene.time.removeEvent(scene.flashEffectTimer);
+                }
+
                 playerVisual.setAlpha(0.5); // Flash effect on collision
-                scene.time.delayedCall(200, () => {
+                // Save the delayed call in the scene for reference.
+                scene.flashEffectTimer = scene.time.delayedCall(200, () => {
                     playerVisual.setAlpha(1);
-                }, [], scene); // Passing this as the context for delayedCall
+                }, [], scene);
             });
+
 
             return () => {
                 // Close the WebSocket connection if it's open
@@ -99,43 +96,35 @@ const PhaserGame = () => {
             };
         };
 
-        // Ensure only one Phaser game instance is created
-        if (!gameRef.current) {
-            const config = {
-                width: 1000,
-                height: 500,
-                type: Phaser.AUTO,
-                backgroundColor: '#333',
-                parent: 'phaser-game-container',
-                physics: {
-                    default: 'arcade',
-                    arcade: {
-                        gravity: { y: 0 },
-                        debug: false,
-                    },
+        const config = {
+            width: 1000,
+            height: 500,
+            type: Phaser.AUTO,
+            backgroundColor: '#333',
+            parent: 'phaser-game-container',
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 0 },
+                    debug: false,
                 },
-                scene: {
-                    preload,
-                    create
-                },
-                scale: {
-                    mode: Phaser.Scale.RESIZE,
-                    autoCenter: Phaser.Scale.CENTER_BOTH,
-                },
-                input: {
-                    touch: true,
-                }
-            };
+            },
+            scene: {
+                preload,
+                create
+            },
+            scale: {
+                mode: Phaser.Scale.RESIZE,
+                autoCenter: Phaser.Scale.CENTER_BOTH,
+            },
+            input: {
+                touch: true,
+            }
+        };
 
-            gameRef.current = new Phaser.Game(config);
-        }
+        gameRef.current = new Phaser.Game(config);
 
-        // WebSocket connection setup
-        connectWebSocket();
-
-        // Cleanup function for both WebSocket and Phaser game instance
         return () => {
-            wsRef.current?.close();
             gameRef.current?.destroy(true);
             gameRef.current = null;
         };
@@ -143,13 +132,28 @@ const PhaserGame = () => {
 
     useEffect(() => {
         initializePhaserGame();
-        connectWebSocket();
 
         return () => {
-            wsRef.current?.close();
-            gameRef.current?.destroy(true);
+            gameRef.current.destroy(true);
             gameRef.current = null;
         };
+    }, []);
+
+    useEffect(() => {
+        // Only set up the WebSocket connection once
+        if (!wsRef.current) {
+            wsRef.current = new WebSocket('ws://localhost:8080');
+
+            wsRef.current.onopen = () => console.log('Connected to the WebSocket server');
+            wsRef.current.onmessage = (event) => console.log('Message from server:', event.data);
+            wsRef.current.onerror = (error) => console.log('WebSocket error:', error);
+            wsRef.current.onclose = () => console.log('Disconnected from the WebSocket server');
+
+            // Return a cleanup function that closes the WebSocket connection
+            return () => {
+                wsRef.current.close();
+            };
+        }
     }, []);
 
     useEffect(() => {
@@ -169,7 +173,7 @@ const PhaserGame = () => {
                 value={playerName}
                 onChange={(e) => setPlayerName(e.target.value)}
                 placeholder="Enter Player Name"
-                style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 100 }}
+                style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 10 }}
             />
             <div id="phaser-game-container"></div>
         </div>
