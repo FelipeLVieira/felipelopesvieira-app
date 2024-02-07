@@ -64,10 +64,15 @@ const PhaserGame = () => {
             const playerBody = scene.physics.add.sprite(x, y, null).setCircle(20).setVisible(false);
             playerBody.setCollideWorldBounds(true);
             playerBody.setBounce(0.8);
+
             playerBody.setVelocity(300, 400);
 
             // Create a visual Arc that matches the playerBody position
             const playerVisual = scene.add.arc(x, y, 20, 0, 360, false, Phaser.Display.Color.HexStringToColor(color).color);
+
+            // Store references to playerBody and playerVisual in the scene for access in update method
+            scene.playerBody = playerBody;
+            scene.playerVisual = playerVisual;
 
             scene.playerNameText = scene.add.text(x, y - 30, name, { fontSize: '16px', fill: '#fff' }).setOrigin(0.5);
 
@@ -98,12 +103,33 @@ const PhaserGame = () => {
                 // You might want to adjust this based on your game's specific logic
                 playerBody.setVelocity(300, 400);
             });
+        };
 
+        const update = function () {
+            const cursorKeys = this.input.keyboard.createCursorKeys();
+            const speed = 200; // Adjust speed as necessary
+
+            if (cursorKeys.left.isDown) {
+                this.playerBody.setVelocityX(-speed);
+            } else if (cursorKeys.right.isDown) {
+                this.playerBody.setVelocityX(speed);
+            } else {
+                this.playerBody.setVelocityX(0);
+            }
+
+            if (cursorKeys.up.isDown) {
+                this.playerBody.setVelocityY(-speed);
+            } else if (cursorKeys.down.isDown) {
+                this.playerBody.setVelocityY(speed);
+            } else {
+                this.playerBody.setVelocityY(0);
+            }
         };
 
         const config = {
-            width: 1000,
-            height: 500,
+            mode: Phaser.Scale.RESIZE,
+            width: '100%', // Scale the game width to match the parent container
+            height: '100%',
             type: Phaser.AUTO,
             backgroundColor: '#333',
             parent: 'phaser-game-container',
