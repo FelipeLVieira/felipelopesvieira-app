@@ -8,6 +8,7 @@ const PhaserGame = () => {
     const wsRef = useRef(null); // WebSocket reference
     const [playerName, setPlayerName] = useState(`Player ${Math.floor(Math.random() * 1000)}`); // State for player name
     const playerNameRef = useRef(playerName); // Ref to keep track of player name without causing re-renders
+    const [isAudioContextStarted, setIsAudioContextStarted] = useState(false);
 
     // Example utility functions to generate random properties
     const getRandomColor = () => {
@@ -24,6 +25,21 @@ const PhaserGame = () => {
         y: Math.floor(Math.random() * gameHeight),
     });
 
+    const initializeWebSocket = () => {
+        if (!wsRef.current) {
+            wsRef.current = new WebSocket('ws://localhost:8080');
+
+            wsRef.current.onopen = () => console.log('Connected to the WebSocket server');
+            wsRef.current.onmessage = (event) => console.log('Message from server:', event.data);
+            wsRef.current.onerror = (error) => console.log('WebSocket error:', error);
+            wsRef.current.onclose = () => console.log('Disconnected from the WebSocket server');
+
+            // Return a cleanup function that closes the WebSocket connection
+            return () => {
+                wsRef.current.close();
+            };
+        }
+    }
 
     const initializePhaserGame = () => {
         const preload = function () {
@@ -71,29 +87,18 @@ const PhaserGame = () => {
             });
 
             scene.physics.add.collider(playerBody, logoImage, () => {
-                // Before setting a new alpha, clear the old delayed call if it exists.
-                if (scene.flashEffectTimer) {
-                    scene.time.removeEvent(scene.flashEffectTimer);
-                }
-
-                playerVisual.setAlpha(0.5); // Flash effect on collision
-                // Save the delayed call in the scene for reference.
-                scene.flashEffectTimer = scene.time.delayedCall(200, () => {
+                // Flash effect on collision
+                playerVisual.setAlpha(0.5);
+                scene.time.delayedCall(200, () => {
                     playerVisual.setAlpha(1);
                 }, [], scene);
+
+                // Reset or maintain velocity after collision
+                // Here, we directly set the velocity back to its original state
+                // You might want to adjust this based on your game's specific logic
+                playerBody.setVelocity(300, 400);
             });
 
-
-            return () => {
-                // Close the WebSocket connection if it's open
-                wsRef.current?.close();
-
-                // Destroy the Phaser game instance if it exists
-                if (gameRef.current && typeof gameRef.current.destroy === 'function') {
-                    gameRef.current.destroy(true);
-                    gameRef.current = null;
-                }
-            };
         };
 
         const config = {
@@ -131,40 +136,21 @@ const PhaserGame = () => {
     };
 
     useEffect(() => {
-        initializePhaserGame();
-
-        return () => {
-            gameRef.current.destroy(true);
-            gameRef.current = null;
-        };
-    }, []);
-
-    useEffect(() => {
-        // Only set up the WebSocket connection once
-        if (!wsRef.current) {
-            wsRef.current = new WebSocket('ws://localhost:8080');
-
-            wsRef.current.onopen = () => console.log('Connected to the WebSocket server');
-            wsRef.current.onmessage = (event) => console.log('Message from server:', event.data);
-            wsRef.current.onerror = (error) => console.log('WebSocket error:', error);
-            wsRef.current.onclose = () => console.log('Disconnected from the WebSocket server');
-
-            // Return a cleanup function that closes the WebSocket connection
-            return () => {
-                wsRef.current.close();
-            };
+        if ((!gameRef.current)) {
+            initializePhaserGame();
+            initializeWebSocket(); // Store the WebSocket reference if needed
         }
     }, []);
 
     useEffect(() => {
-        // Update the player's name in Phaser when it changes
-        if (gameRef.current && gameRef.current.scene && gameRef.current.scene.scenes.length > 0) {
+        // Update playerName in Phaser game, this effect depends on the game being initialized first
+        if (gameRef.current) {
             const scene = gameRef.current.scene.scenes[0];
             if (scene && scene.playerNameText) {
                 scene.playerNameText.setText(playerName);
             }
         }
-    }, [playerName]); // This effect runs when playerName changes
+    }, [playerName]);
 
     return (
         <div>
