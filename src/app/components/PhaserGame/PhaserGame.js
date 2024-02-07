@@ -98,17 +98,36 @@ const PhaserGame = () => {
                 scene.playerNameText.setPosition(playerBody.x, playerBody.y - 30); // Update the Phaser text object
             });
 
+            // Define variables to store previous dimensions
+            let prevWidth = scene.cameras.main.width;
+            let prevHeight = scene.cameras.main.height;
+
             scene.scale.on('resize', function (gameSize) {
                 const { width, height } = gameSize;
 
-                // Adjust your game's configuration based on the new size
+                // Calculate the proportion of the old position relative to the old dimensions
+                const proportionX = playerBody.x / prevWidth;
+                const proportionY = playerBody.y / prevHeight;
+
+                // Calculate new positions based on the proportions
+                const newPositionX = width * proportionX;
+                const newPositionY = height * proportionY;
+
+                // Update the game elements' positions to the new calculated positions
+                playerBody.setPosition(newPositionX, newPositionY);
+                playerVisual.setPosition(newPositionX, newPositionY);
+                scene.playerNameText.setPosition(newPositionX, newPositionY - 30);
+
+                // Update the world bounds to match the new game size
+                scene.physics.world.setBounds(0, 0, width, height);
+
+                // Adjust camera and viewport as needed
                 scene.cameras.main.setViewport(0, 0, width, height);
+                scene.cameras.main.setBounds(0, 0, width, height);
 
-                // Update positions of elements like the playerNameText to adapt to the new size
-                scene.playerNameText.setPosition(playerVisual.x, playerVisual.y - 30);
-
-                // Here, you don't need to manually resize the game canvas; Phaser handles it for you.
-                // Instead, adjust any game element dimensions or positions as needed.
+                // Update the previous dimensions variables
+                prevWidth = width;
+                prevHeight = height;
             });
 
             scene.physics.add.collider(playerBody, logoImage, () => {
