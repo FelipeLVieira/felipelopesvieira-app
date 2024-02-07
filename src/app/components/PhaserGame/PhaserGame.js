@@ -10,7 +10,21 @@ const PhaserGame = () => {
     const playerNameRef = useRef(playerName); // Ref to keep track of player name without causing re-renders
     const [isAudioContextStarted, setIsAudioContextStarted] = useState(false);
 
-    // Example utility functions to generate random properties
+
+    const resizeGame = () => {
+        const game = gameRef.current;
+        if (game) {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            game.scale.resize(width, height);
+
+            // If you have specific logic to reposition or resize game elements, call it here
+            // For example:
+            // const scene = game.scene.scenes[0];
+            // scene.cameras.main.setViewport(0, 0, width, height);
+        }
+    };
+
     const getRandomColor = () => {
         const letters = '0123456789ABCDEF';
         let color = '#';
@@ -84,11 +98,17 @@ const PhaserGame = () => {
                 scene.playerNameText.setPosition(playerBody.x, playerBody.y - 30); // Update the Phaser text object
             });
 
-            // When the scene is resized, again update the Phaser text object.
             scene.scale.on('resize', function (gameSize) {
                 const { width, height } = gameSize;
+
+                // Adjust your game's configuration based on the new size
                 scene.cameras.main.setViewport(0, 0, width, height);
+
+                // Update positions of elements like the playerNameText to adapt to the new size
                 scene.playerNameText.setPosition(playerVisual.x, playerVisual.y - 30);
+
+                // Here, you don't need to manually resize the game canvas; Phaser handles it for you.
+                // Instead, adjust any game element dimensions or positions as needed.
             });
 
             scene.physics.add.collider(playerBody, logoImage, () => {
@@ -152,18 +172,26 @@ const PhaserGame = () => {
         };
 
         gameRef.current = new Phaser.Game(config);
-
-        return () => {
-            gameRef.current?.destroy(true);
-            gameRef.current = null;
-        };
     };
 
     useEffect(() => {
         if ((!gameRef.current)) {
             initializePhaserGame();
-            initializeWebSocket(); // Store the WebSocket reference if needed
+            initializeWebSocket();
         }
+
+        // Listen for window resize events
+        window.addEventListener('resize', resizeGame);
+
+        return () => {
+            window.removeEventListener('resize', resizeGame);
+
+            // Clean up the game when the component unmounts
+            if (gameRef.current) {
+                gameRef.current.destroy(true);
+                gameRef.current = null;
+            }
+        };
     }, []);
 
     useEffect(() => {
