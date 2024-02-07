@@ -2,12 +2,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw; /* Example width */
-    height: 50vh; /* Example height, adjust as needed */
+    width: 100%; /* Example width */
+    height: 100%; /* Example height, adjust as needed */
     background-color: var(--footer-foreground);
     color: var(--background);
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.2rem;
-    pointer-events:auto;
+    pointer-events: all;
     position: relative;
+}
+
+input[type="text"] {
+    width: 200px; /* Adjust based on your preference */
+    margin: 10px;
+    padding: 5px;
+    z-index: 10; /* Ensure it's above the Phaser canvas */
 }

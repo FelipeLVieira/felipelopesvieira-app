@@ -9,8 +9,8 @@
 
 .logo-grid-section {
     width: 100vw;
-    height: 50vh;
-    display: flex;
+    height: 100%;
+    display: block;
     justify-content: center;
     align-items: center;
     flex-direction: column;

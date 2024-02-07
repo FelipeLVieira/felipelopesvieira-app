@@ -54,6 +54,6 @@ p {
 /* Media query for smaller screens */
 @media (max-width: 768px) {
     .typewriter-container {
-        font-size: 0.7rem; /* Adjust font size for mobile devices */
+        font-size: clamp(0.8rem, 2vw, 1.2rem); /* Adjust these values as needed */
     }
 }
