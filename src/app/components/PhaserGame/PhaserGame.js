@@ -145,6 +145,21 @@ const PhaserGame = () => {
         };
 
         const update = function () {
+
+            const pointer = this.input.activePointer;
+
+            if (pointer.isDown && pointer.justMoved) {
+                const deltaX = pointer.position.x - pointer.prevPosition.x;
+                const deltaY = pointer.position.y - pointer.prevPosition.y;
+
+                // Adjust the player's velocity based on touch input
+                this.playerBody.setVelocityX(deltaX * 2); // Multiply by 2 for faster scrolling
+                this.playerBody.setVelocityY(deltaY * 2); // Multiply by 2 for faster scrolling
+            } else {
+                // Stop the player's movement if no touch input detected
+                this.playerBody.setVelocity(0);
+            }
+
             const cursorKeys = this.input.keyboard.createCursorKeys();
             const speed = 200; // Adjust speed as necessary
 
@@ -179,7 +194,8 @@ const PhaserGame = () => {
             },
             scene: {
                 preload,
-                create
+                create,
+                update,
             },
             scale: {
                 mode: Phaser.Scale.RESIZE,
