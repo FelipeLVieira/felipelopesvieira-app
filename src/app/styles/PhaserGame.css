@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     width: 100%; /* Example width */
-    height: 50%; /* Example height, adjust as needed */
+    height: 45%; /* Example height, adjust as needed */
     background-color: var(--footer-foreground);
     color: var(--background);
     font-family: 'Courier New', Courier, monospace;

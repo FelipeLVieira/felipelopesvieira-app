@@ -128,8 +128,6 @@ const PhaserGame = () => {
 
         const config = {
             mode: Phaser.Scale.RESIZE,
-            width: '100%', // Scale the game width to match the parent container
-            height: '100%',
             type: Phaser.AUTO,
             backgroundColor: '#333',
             parent: 'phaser-game-container',
