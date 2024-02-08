@@ -1,5 +1,5 @@
 "use client";
-import {motion, useAnimation} from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import ncllogo from '@/app/assets/LogoGrid/ncl-cruise.png';
 import axielllogo from '@/app/assets/LogoGrid/axiell_group_logo.png';
 import ibmlogo from '@/app/assets/LogoGrid/ibm-logo.png';
@@ -36,21 +36,19 @@ const titleBackgroundAnimation = {
 
 const LogoGrid = ({isTypingComplete}) => {
     const [logoVariant, setLogoVariant] = useState('initial');
+    const { scrollYProgress } = useScroll()
+    const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
 
     useEffect(() => {
         if (isTypingComplete) {
-            setLogoVariant('animate');
+            setTimeout(() => {
+                setLogoVariant('animate');
+            }, 1500);
         }
     }, [isTypingComplete]);
 
     return (
         <div className="logo-grid-section">
-            <motion.div
-                className="title-background"
-                initial="initial"
-                animate="animate"
-                variants={titleBackgroundAnimation}
-            />
             <motion.h2 variants={titleAnimation} animate="animate">
                 <div className="section-title">
                     Companies I&apos;ve worked with
@@ -59,11 +57,16 @@ const LogoGrid = ({isTypingComplete}) => {
             <div className="logo-grid">
                 {logos.map(logo => (
                     <motion.div
-                        key={logo.id}
-                        whileHover={{scale: 1.1, opacity: 1}} // Direct inline variant for debugging
-                        initial={{scale: 0.8, opacity: 0}}
-                        animate={{scale: 1, opacity: 1}} // Inline styles for direct testing
                         className="logo-item"
+                        key={logo.id}
+                        whileHover={{scale: 1.5, opacity: 1}} // Keeps the hover effect
+                        initial={{ scale: 0 }}
+                        animate={{ rotate: 360, scale: 1 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 260,
+                            damping: 20
+                        }}
                     >
                         <Image src={logo.src} alt={logo.alt} priority={true} width={120} height={120}/>
                     </motion.div>
