@@ -5,12 +5,6 @@ import LogoGrid from "@/app/components/LogoGrid/LogoGrid";
 import {useEffect, useState} from "react";
 import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
 
-const PhaserGame = dynamic(() => import('@/app/components/PhaserGame/PhaserGame'), {
-    ssr: false,
-    // Loading the component immediately without waiting for the TypewriterEffect to finish
-    loading: () => <div style={{ height: '500px' }}>Loading ...</div>
-});
-
 const fadeInVariants = {
     hidden: {opacity: 0, y: 50},
     visible: {opacity: 1, y: 0, transition: {duration: 1, ease: 'easeOut'}}
@@ -37,7 +31,6 @@ const Home = () => {
                 variants={fadeInVariants}
             >
                 {/* PhaserGame component is displayed first, followed by LogoGrid */}
-                <PhaserGame />
                 <LogoGrid isTypingComplete={isTypingComplete} />
             </motion.div>
         </>

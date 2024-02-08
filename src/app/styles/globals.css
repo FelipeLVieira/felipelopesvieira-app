@@ -12,13 +12,13 @@
 [data-theme='dark'] {
     --background: #121212; /* Dark mode background */
     --foreground: #e0e0e0; /* Dark mode text */
-    --primary-color: #021a7d; /* Dark mode primary color */
+    --primary-color: #001048; /* Dark mode primary color */
     --secondary-color: #03DAC6; /* Dark mode secondary color */
 }
 
 
 html, body {
-    width: 100%;
+    width: 100vw;
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-family);
@@ -44,7 +44,7 @@ p {
 }
 
 .main-container {
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column; /* Change to column direction */
     position: relative;

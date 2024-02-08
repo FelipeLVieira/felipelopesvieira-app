@@ -1,7 +1,7 @@
 /* Footer.css */
 .footer {
     height: 10vh;
-    width: 100%;
+    width: 100vw;
     opacity: 1;
     display: flex;
     padding: 2rem 0;
