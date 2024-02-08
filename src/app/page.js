@@ -23,7 +23,7 @@ const Home = () => {
 
     return (
         <>
-            <TypewriterEffect onComplete={onTypingComplete} />
+            <TypewriterEffect onComplete={onTypingComplete}/>
             <motion.div
                 className="main-container"
                 initial="hidden"
@@ -31,7 +31,7 @@ const Home = () => {
                 variants={fadeInVariants}
             >
                 {/* PhaserGame component is displayed first, followed by LogoGrid */}
-                <LogoGrid isTypingComplete={isTypingComplete} />
+                <LogoGrid isTypingComplete={isTypingComplete}/>
             </motion.div>
         </>
     );

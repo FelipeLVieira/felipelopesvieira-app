@@ -1,5 +1,5 @@
 "use client";
-import { motion, useScroll, useTransform } from 'framer-motion';
+import {motion, useScroll, useTransform} from 'framer-motion';
 import ncllogo from '@/app/assets/LogoGrid/ncl-cruise.png';
 import axielllogo from '@/app/assets/LogoGrid/axiell_group_logo.png';
 import ibmlogo from '@/app/assets/LogoGrid/ibm-logo.png';
