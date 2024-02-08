@@ -6,7 +6,7 @@ import ibmlogo from '@/app/assets/LogoGrid/ibm-logo.png';
 import healthgradeslogo from '@/app/assets/LogoGrid/healthgrades-logo.png';
 import articlelogo from '@/app/assets/LogoGrid/article-logo.png';
 import b2wlogo from '@/app/assets/LogoGrid/b2w-logo.png';
-import Image from "next/image";
+import Image from "next/legacy/image";
 import styles from "@/app/styles/LogoGrid.css";
 import {useEffect, useState} from "react";
 import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
