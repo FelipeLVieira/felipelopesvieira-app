@@ -6,6 +6,7 @@ import ibmlogo from '@/app/assets/LogoGrid/ibm-logo.png';
 import healthgradeslogo from '@/app/assets/LogoGrid/healthgrades-logo.png';
 import articlelogo from '@/app/assets/LogoGrid/article-logo.png';
 import b2wlogo from '@/app/assets/LogoGrid/b2w-logo.png';
+import aguasdobrasillogo from '@/app/assets/LogoGrid/aguasdobrasil-logo.png';
 import Image from "next/legacy/image";
 import styles from "@/app/styles/LogoGrid.css";
 import {useEffect, useState} from "react";
@@ -18,6 +19,7 @@ const logos = [
     {id: 4, src: healthgradeslogo, alt: 'Healthgrades'},
     {id: 5, src: articlelogo, alt: 'Article'},
     {id: 6, src: b2wlogo, alt: 'B2W Software'},
+    {id: 7, src: aguasdobrasillogo, alt: 'Águas do Brasil'},
 ];
 
 
