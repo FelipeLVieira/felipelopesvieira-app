@@ -1,19 +1,25 @@
 :root {
     --background: #f0f0f0; /* Light mode background */
     --foreground: #333; /* Light mode text */
-    --primary-color: #007BFF; /* Light mode primary color */
-    --secondary-color: #00f90a; /* Light mode secondary color */
+    --primary-color: #cbcbcb; /* Light mode primary color */
+    --secondary-color: #3ea5ff; /* Light mode secondary color */
     --font-family: 'Arial', sans-serif;
     --transition-duration: 0.5s;
-    --footer-background: #f0f0f0; /* Light theme background */
+    --footer-background: #6f6f6f; /* Light theme background */
     --footer-foreground: #333; /* Light theme text */
+    --detail-background-color: #f8f9fa; /* Light background for the detail section */
+    --detail-text-color: #333; /* Dark text color for readability */
 }
 
 [data-theme='dark'] {
     --background: #121212; /* Dark mode background */
     --foreground: #e0e0e0; /* Dark mode text */
-    --primary-color: #001048; /* Dark mode primary color */
-    --secondary-color: #03DAC6; /* Dark mode secondary color */
+    --primary-color: #1a1a1a; /* Dark mode primary color */
+    --secondary-color: #004178; /* Dark mode secondary color */
+    --footer-background: #646464; /* Light theme background */
+    --footer-foreground: #e0e0e0; /* Light theme text */
+    --detail-background-color: #353535; /* Dark background for the detail section */
+    --detail-text-color: #e0e0e0; /* Light text color for readability */
 }
 
 

@@ -1,9 +1,9 @@
 .navbar {
-    background-color: var(--primary-color); /* Use the global variable for background color */
+    background-color: var(--secondary-color); /* Use the global variable for background color */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 .navbar h1 {
@@ -17,9 +17,9 @@
 }
 
 .social-icon {
-    font-size: 40px; /* Icon size, adjust as needed */
+    font-size: 35px; /* Icon size, adjust as needed */
     color: var(--foreground); /* Icon color, adjust as needed */
-    margin-right: 10px; /* Space between icons */
+    margin: 10px; /* Space between icons */
     transition: color 0.3s ease-in-out, transform 0.3s ease; /* Smooth transition for hover effect */
     display: inline-block; /* Allows the transform property to work */
 }

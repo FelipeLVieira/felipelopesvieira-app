@@ -17,7 +17,7 @@
     border-top: 2px solid var(--secondary-color);
     border-bottom: 2px solid var(--secondary-color);
     position: relative; /* Stack on top of absolute elements */
-    padding: 30px;
+    padding: 20px;
 }
 
 .logo-grid {
@@ -26,7 +26,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto; /* This centers the .logo-grid within its parent */
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box; /* Ensures padding does not add to the total width */
     border: 2px solid var(--secondary-color); /* Add border to logo grid */
     animation: glowing-border 2s infinite; /* Apply the glowing border animation */
@@ -34,19 +34,25 @@
 
 
 .logo-item {
-    margin: 10px;
-    min-width: 150px; /* Allows growth */
-    min-height: 150px; /* Allows growth */
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 10px;
 }
 
-.logo-item img {
-    opacity: 1; /* Adjust opacity for better visibility over the PhaserGame */
-    transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+.logo-section{
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 @keyframes glowing-border {
@@ -59,4 +65,33 @@
     100% {
         box-shadow: 0 0 5px #fff;
     }
+}
+
+.detail-section {
+    background-color: var(--detail-background-color, #f8f9fa); /* Light background for the detail section */
+    color: var(--detail-text-color, #333); /* Dark text color for readability */
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme changes */
+}
+
+.detail-section p {
+    margin: 0; /* Remove default paragraph margin */
+}
+
+.detail-section button {
+    margin-top: 10px; /* Spacing above the button */
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--button-background-color, #007bff); /* Button background */
+    color: var(--button-text-color, #ffffff); /* Button text color */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.detail-section button:hover {
+    background-color: var(--button-hover-background-color, #0056b3); /* Darker on hover */
 }

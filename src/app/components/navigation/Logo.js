@@ -7,8 +7,8 @@ const Logo = () => {
         <Image
             src={logo}
             alt="Logo"
-            width={100} // Adjust as needed
-            height={100} // Adjust as needed
+            width={80} // Adjust as needed
+            height={80} // Adjust as needed
             priority={true}
         />
     );
