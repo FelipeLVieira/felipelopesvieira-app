@@ -9,6 +9,7 @@
     --footer-foreground: #333; /* Light theme text */
     --detail-background-color: #f8f9fa; /* Light background for the detail section */
     --detail-text-color: #333; /* Dark text color for readability */
+    --hover-color: #ffffff; /* Light mode hover color */
 }
 
 [data-theme='dark'] {
@@ -20,6 +21,7 @@
     --footer-foreground: #e0e0e0; /* Light theme text */
     --detail-background-color: #353535; /* Dark background for the detail section */
     --detail-text-color: #e0e0e0; /* Light text color for readability */
+    --hover-color: #8051fe; /* Dark mode hover color */
 }
 
 
