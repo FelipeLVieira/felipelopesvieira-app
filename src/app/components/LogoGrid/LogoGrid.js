@@ -12,7 +12,8 @@ import styles from "@/app/styles/LogoGrid.css";
 import {useState} from "react";
 
 const logos = [
-    {id: 1, src: axielllogo, alt: 'Axiell', description: <div>
+    {
+        id: 1, src: axielllogo, alt: 'Axiell', description: <div>
             <strong>Consultant at Axiell (Remote), 2021 - Present</strong><br/><br/>
             Software Engineer Contractor<br/><br/>
             • Instrumental in the e-commerce platform overhaul for Oceania Cruises, enhancing user experience and sales
@@ -37,7 +38,8 @@ const logos = [
             <br/>
         </div>
     },
-    {id: 3, src: ibmlogo, alt: 'IBM', description: <div>
+    {
+        id: 3, src: ibmlogo, alt: 'IBM', description: <div>
             <strong>IBM (Remote), 2019 - 2020</strong><br/><br/>
             Software Engineer<br/><br/>
             • Enhanced the customer engagement experience by refining the Guided Selling Tool for Sprint stores,
@@ -61,7 +63,8 @@ const logos = [
             platform.<br/>
             <br/></div>
     },
-    {id: 5, src: articlelogo, alt: 'Article', description: <div>
+    {
+        id: 5, src: articlelogo, alt: 'Article', description: <div>
             <strong>Independent Contractor at Article (Remote), 2020</strong><br/><br/>
             Software Engineer<br/><br/>
             • Co-engineered a suite of new software tools, augmenting Article&apos;s e-commerce platform&apos;s
@@ -123,7 +126,7 @@ const LogoGrid = ({isTypingComplete}) => {
     };
 
     const container = {
-        hidden: { opacity: 0 },
+        hidden: {opacity: 0},
         show: {
             opacity: 1,
             transition: {
@@ -133,22 +136,23 @@ const LogoGrid = ({isTypingComplete}) => {
     };
 
     const item = {
-        initial: { opacity: 0, height: 0 },
-        animate: { opacity: 1, height: "auto", transition: { duration: 0.5 } },
-        hidden: { y: 20, opacity: 0 },
-        show: { y: 0, opacity: 1 },
+        initial: {opacity: 0, height: 0},
+        animate: {opacity: 1, height: "auto", transition: {duration: 0.5}},
+        hidden: {y: 20, opacity: 0},
+        show: {y: 0, opacity: 1},
     };
 
     const detailAnimate = {
-        initial: { opacity: 0, height: 0 },
-        animate: { opacity: 1, height: "auto", transition: { duration: 0.5 } },
-        exit: { opacity: 0, height: 0, transition: { duration: 0.5 } },
+        initial: {opacity: 0, height: 0},
+        animate: {opacity: 1, height: "auto", transition: {duration: 0.5}},
+        exit: {opacity: 0, height: 0, transition: {duration: 0.5}},
     };
 
     return (
         <AnimatePresence>
             <div className="logo-grid-section">
-                <motion.h2 variants={titleAnimation} animate={isTypingComplete ? "animate" : "hidden"} className="section-title">
+                <motion.h2 variants={titleAnimation} animate={isTypingComplete ? "animate" : "hidden"}
+                           className="section-title">
                     Companies I&apos;ve worked with
                 </motion.h2>
                 <motion.div className="logo-grid" variants={container} initial="hidden" animate="show">
