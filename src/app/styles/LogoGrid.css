@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
     border-top: 2px solid var(--secondary-color);
     border-bottom: 2px solid var(--secondary-color);
     position: relative; /* Stack on top of absolute elements */
@@ -30,10 +30,14 @@
     box-sizing: border-box; /* Ensures padding does not add to the total width */
     border: 2px solid var(--secondary-color); /* Add border to logo grid */
     animation: glowing-border 2s infinite; /* Apply the glowing border animation */
+    width: 100%;
 }
 
 
 .logo-item {
+    flex: 1 0 100%; /* Grow to full width, don't shrink, base width 100% */
+    width: 100%; /* Set the width of each logo item to full width */
+    box-sizing: border-box; /* Ensures padding and borders are included in the total width */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -68,8 +72,9 @@
 }
 
 .detail-section {
-    background-color: var(--detail-background-color, #f8f9fa); /* Light background for the detail section */
-    color: var(--detail-text-color, #333); /* Dark text color for readability */
+    max-width: 800px;
+    background-color: var(--detail-background-color); /* Light background for the detail section */
+    color: var(--detail-text-color); /* Dark text color for readability */
     padding: 10px;
     margin-top: 10px;
     border-radius: 8px;

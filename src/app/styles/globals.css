@@ -1,27 +1,32 @@
 :root {
     --background: #f0f0f0; /* Light mode background */
-    --foreground: #333; /* Light mode text */
+    --foreground: #2d2d2d; /* Light mode text */
     --primary-color: #cbcbcb; /* Light mode primary color */
     --secondary-color: #3ea5ff; /* Light mode secondary color */
     --font-family: 'Arial', sans-serif;
     --transition-duration: 0.5s;
-    --footer-background: #6f6f6f; /* Light theme background */
-    --footer-foreground: #333; /* Light theme text */
-    --detail-background-color: #f8f9fa; /* Light background for the detail section */
-    --detail-text-color: #333; /* Dark text color for readability */
+    --footer-background: #edeaea; /* Light theme background */
+    --footer-foreground: #3c3c3c; /* Light theme text */
+    --detail-background-color: #ffffff; /* Light background for the detail section */
+    --detail-text-color: #000000; /* Dark text color for readability */
     --hover-color: #ffffff; /* Light mode hover color */
+    --button-background-color: #007bff; /* Button background */
+    --button-text-color: #ffffff; /* Button text color */
+    --button-hover-background-color: #0056b3; /* Button hover background */
 }
 
 [data-theme='dark'] {
     --background: #121212; /* Dark mode background */
     --foreground: #e0e0e0; /* Dark mode text */
-    --primary-color: #1a1a1a; /* Dark mode primary color */
+    --primary-color: #363636; /* Dark mode primary color */
     --secondary-color: #004178; /* Dark mode secondary color */
-    --footer-background: #646464; /* Light theme background */
+    --footer-background: #000000; /* Light theme background */
     --footer-foreground: #e0e0e0; /* Light theme text */
-    --detail-background-color: #353535; /* Dark background for the detail section */
+    --detail-background-color: #2f2f2f; /* Dark background for the detail section */
     --detail-text-color: #e0e0e0; /* Light text color for readability */
     --hover-color: #8051fe; /* Dark mode hover color */
+    --button-background-color: #8051fe; /* Button background */
+    --button-hover-background-color: #5a2eeb; /* Darker on hover */
 }
 
 

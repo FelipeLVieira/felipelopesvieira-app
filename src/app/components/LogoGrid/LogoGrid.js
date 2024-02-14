@@ -1,5 +1,5 @@
 "use client";
-import {AnimatePresence, motion, useScroll, useTransform} from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
 import ncllogo from '@/app/assets/LogoGrid/ncl-cruise.png';
 import axielllogo from '@/app/assets/LogoGrid/axiell_group_logo.png';
 import ibmlogo from '@/app/assets/LogoGrid/ibm-logo.png';
@@ -9,13 +9,12 @@ import b2wlogo from '@/app/assets/LogoGrid/b2w-logo.png';
 import aguasdobrasillogo from '@/app/assets/LogoGrid/aguasdobrasil-logo.png';
 import Image from "next/legacy/image";
 import styles from "@/app/styles/LogoGrid.css";
-import {useEffect, useState} from "react";
-import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
+import {useState} from "react";
 
 const logos = [
     {id: 1, src: axielllogo, alt: 'Axiell', description: <div>
-            <strong>Consultant at Axiell (Remote), 2021 - Present</strong><br/>
-            Software Engineer Contractor<br/>
+            <strong>Consultant at Axiell (Remote), 2021 - Present</strong><br/><br/>
+            Software Engineer Contractor<br/><br/>
             • Instrumental in the e-commerce platform overhaul for Oceania Cruises, enhancing user experience and sales
             process efficiency.<br/>
             • Employed a suite of modern development tools and languages (Vue.js, Angular, C#, Scala) in conjunction
@@ -27,8 +26,8 @@ const logos = [
     },
     {
         id: 2, src: ncllogo, alt: 'NCL', description: <div>
-            <strong>Consultant at Norwegian Cruise Lines (Remote), 2023</strong><br/>
-            Software Engineer Contractor<br/>
+            <strong>Consultant at Norwegian Cruise Lines (Remote), 2023</strong><br/><br/>
+            Software Engineer Contractor<br/><br/>
             • Played a key role in modernizing the Oceania Cruises e-commerce website. Focused on enhancing user
             experience and performance by revamping the sales platform.<br/>
             • Utilized a range of modern development tools and languages including Vue.js, Angular, C#, and Scala,
@@ -39,8 +38,8 @@ const logos = [
         </div>
     },
     {id: 3, src: ibmlogo, alt: 'IBM', description: <div>
-            <strong>IBM (Remote), 2019 - 2020</strong><br/>
-            Software Engineer<br/>
+            <strong>IBM (Remote), 2019 - 2020</strong><br/><br/>
+            Software Engineer<br/><br/>
             • Enhanced the customer engagement experience by refining the Guided Selling Tool for Sprint stores,
             contributing to an uptick in sales.<br/>
             • Integral to the Sprint and T-Mobile merger, unifying backend systems and revamping UI/UX for a cohesive
@@ -52,8 +51,8 @@ const logos = [
     },
     {
         id: 4, src: healthgradeslogo, alt: 'Healthgrades', description: <div><strong>Independent Contractor at
-            Healthgrades (Remote), 2020 - 2021</strong><br/>
-            Software Engineer<br/>
+            Healthgrades (Remote), 2020 - 2021</strong><br/><br/>
+            Software Engineer<br/><br/>
             • Pioneered the integration of Salesforce within the patient-doctor engagement process, optimizing
             interaction flows.<br/>
             • Leveraged AWS services and Jenkins to fortify system efficiency and reliability, delivering a seamless
@@ -63,9 +62,10 @@ const logos = [
             <br/></div>
     },
     {id: 5, src: articlelogo, alt: 'Article', description: <div>
-            <strong>Independent Contractor at Article (Remote), 2020</strong><br/>
-            Software Engineer<br/>
-            • Co-engineered a suite of new software tools, augmenting Article&apos;s e-commerce platform&apos;s functionality and
+            <strong>Independent Contractor at Article (Remote), 2020</strong><br/><br/>
+            Software Engineer<br/><br/>
+            • Co-engineered a suite of new software tools, augmenting Article&apos;s e-commerce platform&apos;s
+            functionality and
             operational efficiency, leveraging Vue.js, Node.js, Java, Spring Boot, Kafka, and Postgres, with a robust
             DevOps pipeline using Docker and AWS.<br/>
             • Key contributor to the financial information system overhaul, enhancing process accuracy and efficiency,
@@ -80,8 +80,8 @@ const logos = [
         src: b2wlogo,
         alt: 'B2W Software',
         description: <div>
-            <strong>B2W, 2018 - 2019</strong><br/>
-            Software Engineer<br/>
+            <strong>B2W, 2018 - 2019</strong><br/><br/>
+            Software Engineer<br/><br/>
             • Spearheaded the development of versatile e-commerce systems, catering to diverse consumer bases and
             business divisions, enriching the online shopping experience.<br/>
             • Pioneered internal tool development to streamline operations across departments, showcasing a proactive
@@ -96,8 +96,8 @@ const logos = [
         src: aguasdobrasillogo,
         alt: 'Águas do Brasil',
         description: <div>
-            <strong>Águas do Brasil Group, 2017</strong><br/>
-            Software Developer<br/>
+            <strong>Águas do Brasil Group, 2017</strong><br/><br/>
+            Software Developer<br/><br/>
             • Led the development of the core CRM system utilizing C#, ASP.NET, and front-end technologies, crucial for
             managing billing operations across multiple Brazilian states.<br/>
             • Consistently enhanced system functionalities with new features, balancing business objectives with
