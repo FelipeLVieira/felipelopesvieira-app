@@ -13,6 +13,7 @@
     --button-background-color: #007bff; /* Button background */
     --button-text-color: #ffffff; /* Button text color */
     --button-hover-background-color: #0056b3; /* Button hover background */
+    --background-transparent: rgba(240, 240, 240, 0.5); /* Example with light theme */
 }
 
 [data-theme='dark'] {
@@ -27,12 +28,17 @@
     --hover-color: #8051fe; /* Dark mode hover color */
     --button-background-color: #8051fe; /* Button background */
     --button-hover-background-color: #5a2eeb; /* Darker on hover */
+    --background-transparent: rgba(0, 0, 0, 0.5); /* Example with light theme */
 }
 
+.logo-grid-section {
+    background-color: var(--background-transparent);
+}
 
 html, body {
     width: 100vw;
-    background-color: var(--background);
+    /*background-color: var(--background);*/
+    background-color: transparent;
     color: var(--foreground);
     font-family: var(--font-family);
     margin: 0;
@@ -62,4 +68,25 @@ p {
     flex-direction: column; /* Change to column direction */
     position: relative;
     min-height: 100vh;
+    justify-content: center; /* Horizontally aligns children (logo items) */
+    align-items: center; /* Vertically aligns children */
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Ensure it's behind other content */
+}
+
+.parallax-background {
+    will-change: transform; /* Optimize for smooth animations */
+    width: 100%;
+    height: 100%;
+    /* Ensure cover and centering of the video */
+    object-fit: cover;
+    object-position: center;
 }

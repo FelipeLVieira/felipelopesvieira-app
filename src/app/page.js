@@ -1,9 +1,9 @@
 "use client";
-import dynamic from 'next/dynamic';
 import {motion} from 'framer-motion';
 import LogoGrid from "@/app/components/LogoGrid/LogoGrid";
 import {useEffect, useState} from "react";
 import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
+import {debounce} from "next/dist/server/utils";
 
 const fadeInVariants = {
     hidden: {opacity: 0, y: 50},
@@ -12,6 +12,23 @@ const fadeInVariants = {
 
 const Home = () => {
     const [isTypingComplete, setIsTypingComplete] = useState(false);
+
+    const handleScroll = () => {
+        const speed = 0.5;
+        const yPos = -window.pageYOffset * speed;
+        const videoBackground = document.querySelector('.parallax-background');
+
+        if (videoBackground) {
+            videoBackground.style.transform = `translateY(${yPos}px)`;
+        }
+    };
+
+    const debouncedHandleScroll = debounce(handleScroll, 10);
+
+    useEffect(() => {
+        window.addEventListener('scroll', debouncedHandleScroll);
+        return () => window.removeEventListener('scroll', debouncedHandleScroll);
+    }, [debouncedHandleScroll]);
 
     useEffect(() => {
         if (isTypingComplete) {
@@ -23,6 +40,12 @@ const Home = () => {
 
     return (
         <>
+            <div className="video-container">
+                <video autoPlay loop muted playsInline className="parallax-background"
+                       style={{transform: 'scale(1.5)'}}>
+                    <source src="/videos/pixel-lofi-city-moewalls-com.mp4" type="video/mp4"/>
+                </video>
+            </div>
             <TypewriterEffect onComplete={onTypingComplete}/>
             <motion.div
                 className="main-container"

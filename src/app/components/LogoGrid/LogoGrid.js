@@ -170,7 +170,8 @@ const LogoGrid = ({isTypingComplete}) => {
                             {expandedLogos[logo.id] && (
                                 <AnimatePresence>
                                     <motion.div {...detailAnimate} className="detail-section">
-                                        <p>{logo.description}</p>
+                                        {/* Use a div or fragment instead of p */}
+                                        <>{logo.description}</>
                                         <motion.button
                                             onClick={(e) => {
                                                 e.stopPropagation(); // Prevents the logo click event
