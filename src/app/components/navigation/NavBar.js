@@ -27,14 +27,13 @@ const NavBar = () => {
                     });
 
                     // Add custom styles to remove the white background on hover
-                    const style = document.createElement('style');
-                    style.type = 'text/css';
-                    style.innerHTML = `
-                    .kofi-button:hover {
-                        background-color: transparent !important; /* Change the color to whatever you want */
-                    }
-                `;
-                    document.head.appendChild(style);
+                    const styleSheet = document.createElement("style");
+                    styleSheet.innerText = `
+                        .kofi-button:hover {
+                            background-color: transparent !important;
+                        }
+                    `;
+                    document.head.appendChild(styleSheet);
                 }
             };
         }
