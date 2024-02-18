@@ -13,19 +13,6 @@ const Home = () => {
     const [isTypingComplete, setIsTypingComplete] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            const yPos = -window.pageYOffset * 0.5;
-            document.documentElement.style.setProperty('--parallax-y', `${yPos}px`);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    useEffect(() => {
         if (isTypingComplete) {
             // Adjust content visibility based on typing completion
         }

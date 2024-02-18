@@ -1,52 +1,44 @@
 "use client";
+import { useEffect } from 'react';
 import ThemeSwitcher from "@/app/components/navigation/ThemeSwitcher";
 import "@/app/styles/NavBar.css";
 import Logo from "@/app/components/navigation/Logo";
 import Link from "next/link";
-import {FaGithub, FaLinkedinIn, FaYoutube} from "react-icons/fa";
-import {useEffect} from "react";
-
+import { FaGithub, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 
 const NavBar = () => {
-
     useEffect(() => {
-        // This ensures the code runs only on the client side
-        const script = document.createElement('script');
-        script.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
-        script.async = true;
-
-        if (!document.querySelector("[src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js']")) {
+        const existingScript = document.querySelector("[src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js']");
+        if (!existingScript) {
+            const script = document.createElement('script');
+            script.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
+            script.async = true;
             document.body.appendChild(script);
-            script.onload = () => {
-                if (window.kofiWidgetOverlay) {
-                    window.kofiWidgetOverlay.draw('fullstackdev1', {
-                        'type': 'floating-chat',
-                        'floating-chat.donateButton.text': 'Support me',
-                        'floating-chat.donateButton.background-color': '#00b9fe',
-                        'floating-chat.donateButton.text-color': '#fff'
-                    });
 
-                    // Add custom styles to remove the white background on hover
-                    const styleSheet = document.createElement("style");
-                    styleSheet.innerText = `
-                        .kofi-button:hover {
-                            background-color: transparent !important;
-                        }
-                    `;
-                    document.head.appendChild(styleSheet);
-                }
+            script.onload = () => {
+                kofiWidgetOverlay.draw('fullstackdev1', {
+                    'type': 'floating-chat',
+                    'floating-chat.donateButton.text': 'Support me',
+                    'floating-chat.donateButton.background-color': '#00b9fe',
+                    'floating-chat.donateButton.text-color': '#fff'
+                });
             };
+        } else if (existingScript && window.kofiWidgetOverlay) {
+            // If the script is already included and the widget is not drawn, draw it.
+            window.kofiWidgetOverlay.draw('fullstackdev1', {
+                'type': 'floating-chat',
+                'floating-chat.donateButton.text': 'Support me',
+                'floating-chat.donateButton.background-color': '#00b9fe',
+                'floating-chat.donateButton.text-color': '#fff'
+            });
         }
     }, []);
-
 
     return (
         <div className="navbar">
             <Link href="/">
                 <Logo/>
             </Link>
-
-            {/* Social Links */}
             <div className="social-links">
                 <a href="https://linkedin.com/in/felipelv" target="_blank" rel="noopener noreferrer">
                     <FaLinkedinIn className="social-icon"/>
@@ -58,7 +50,6 @@ const NavBar = () => {
                     <FaYoutube className="social-icon"/>
                 </a>
             </div>
-
             <ThemeSwitcher/>
         </div>
     );

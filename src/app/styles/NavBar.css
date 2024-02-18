@@ -28,7 +28,3 @@
     color: var(--hover-color); /* Change color on hover */
     transform: scale(1.4); /* Slightly increase the icon size */
 }
-
-.kofi-button:hover {
-    background-color: transparent !important; /* Use !important to override existing styles */
-}

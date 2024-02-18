@@ -38,7 +38,6 @@
 html, body {
     width: 100%; /* This change prevents horizontal scrollbar issues */
     background-color: transparent;
-    color: var(--foreground);
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
@@ -86,20 +85,20 @@ p {
     overflow: hidden;
 }
 
+.video-background::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10vh; /* Adjust the height as needed */
+    background: linear-gradient(to top, var(--background) 0%, transparent 100%);
+    z-index: 2; /* Ensure it's above the video content */
+}
+
 .video-background {
+    position: relative;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Use the CSS variable for transformation */
-    transform: translateY(var(--parallax-y));
 }
-
-
-.parallax-background {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh; /* Adjust based on your needs */
-}
-
