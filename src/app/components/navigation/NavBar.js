@@ -6,15 +6,15 @@ import Link from "next/link";
 import {FaGithub, FaLinkedinIn, FaYoutube} from "react-icons/fa";
 import {useEffect} from "react";
 
+const script = document.createElement('script');
+script.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
+script.async = true;
+
 const NavBar = () => {
     useEffect(() => {
         // Ensure the script isn't already loaded
         if (!window.kofiWidgetOverlay) {
-            const script = document.createElement('script');
-            script.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
-            script.async = true;
             document.body.appendChild(script);
-
             script.onload = () => {
                 kofiWidgetOverlay.draw('fullstackdev1', {
                     'type': 'floating-chat',
@@ -25,6 +25,7 @@ const NavBar = () => {
             };
         }
     }, []);
+
     return (
         <div className="navbar">
             <Link href="/">

@@ -15,32 +15,18 @@ const Home = () => {
     let lastScrollY = window.pageYOffset;
     let ticking = false;
 
-    const handleScroll = () => {
-        lastScrollY = window.pageYOffset;
-
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const yPos = -lastScrollY * 0.5;
-                const videoBackground = document.querySelector('.parallax-background');
-
-                if (videoBackground) {
-                    videoBackground.style.transform = `translateY(${yPos}px)`;
-                }
-                ticking = false;
-            });
-
-            ticking = true;
-        }
-    };
-
-    // Adjust the debounce function to have a longer delay if sticking with debounce
-    const debouncedHandleScroll = debounce(handleScroll, 100);
-
     useEffect(() => {
-        window.addEventListener('scroll', debouncedHandleScroll);
-        return () => window.removeEventListener('scroll', debouncedHandleScroll);
-    }, [debouncedHandleScroll]);
+        const handleScroll = () => {
+            const yPos = -window.pageYOffset * 0.5;
+            document.documentElement.style.setProperty('--parallax-y', `${yPos}px`);
+        };
 
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     useEffect(() => {
         if (isTypingComplete) {
@@ -53,11 +39,12 @@ const Home = () => {
     return (
         <>
             <div className="video-container">
-                <video autoPlay loop muted playsInline className="parallax-background"
-                       style={{transform: 'scale(1.5)'}}>
+                <video autoPlay loop muted className="video-background">
                     <source src="/videos/pixel-lofi-city-moewalls-com.mp4" type="video/mp4"/>
+                    Your browser does not support the video tag.
                 </video>
             </div>
+
             <TypewriterEffect onComplete={onTypingComplete}/>
             <motion.div
                 className="main-container"
