@@ -26,6 +26,13 @@ const NavBar = () => {
                         'floating-chat.donateButton.background-color': '#00b9fe',
                         'floating-chat.donateButton.text-color': '#fff'
                     });
+
+                    // Apply additional styles after the widget has been drawn
+                    const kofiButton = document.querySelector('.kofi-button'); // Replace with the actual selector
+                    if (kofiButton) {
+                        kofiButton.onmouseover = () => kofiButton.style.backgroundColor = 'transparent';
+                        kofiButton.onmouseleave = () => kofiButton.style.backgroundColor = ''; // Reset to default on mouse leave
+                    }
                 }
             };
         }
