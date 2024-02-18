@@ -15,7 +15,6 @@ const NavBar = () => {
         script.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
         script.async = true;
 
-        // Append the script only if it's not already loaded
         if (!document.querySelector("[src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js']")) {
             document.body.appendChild(script);
             script.onload = () => {
@@ -27,16 +26,20 @@ const NavBar = () => {
                         'floating-chat.donateButton.text-color': '#fff'
                     });
 
-                    // Apply additional styles after the widget has been drawn
-                    const kofiButton = document.querySelector('.kofi-button'); // Replace with the actual selector
-                    if (kofiButton) {
-                        kofiButton.onmouseover = () => kofiButton.style.backgroundColor = 'transparent';
-                        kofiButton.onmouseleave = () => kofiButton.style.backgroundColor = ''; // Reset to default on mouse leave
+                    // Add custom styles to remove the white background on hover
+                    const style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = `
+                    .kofi-button:hover {
+                        background-color: transparent !important; /* Change the color to whatever you want */
                     }
+                `;
+                    document.head.appendChild(style);
                 }
             };
         }
     }, []);
+
 
     return (
         <div className="navbar">
