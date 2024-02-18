@@ -3,7 +3,6 @@ import {motion} from 'framer-motion';
 import LogoGrid from "@/app/components/LogoGrid/LogoGrid";
 import {useEffect, useState} from "react";
 import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
-import {debounce} from "next/dist/server/utils";
 
 const fadeInVariants = {
     hidden: {opacity: 0, y: 50},
@@ -12,8 +11,6 @@ const fadeInVariants = {
 
 const Home = () => {
     const [isTypingComplete, setIsTypingComplete] = useState(false);
-    let lastScrollY = window.pageYOffset;
-    let ticking = false;
 
     useEffect(() => {
         const handleScroll = () => {
