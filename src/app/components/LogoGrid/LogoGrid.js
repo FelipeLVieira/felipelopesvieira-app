@@ -8,8 +8,8 @@ import articlelogo from '@/app/assets/LogoGrid/article-logo.png';
 import b2wlogo from '@/app/assets/LogoGrid/b2w-logo.png';
 import aguasdobrasillogo from '@/app/assets/LogoGrid/aguasdobrasil-logo.png';
 import Image from "next/legacy/image";
-import styles from "@/app/styles/LogoGrid.css";
 import {useState} from "react";
+import '@/app/styles/LogoGrid.css';
 
 const logos = [
     {
@@ -19,9 +19,13 @@ const logos = [
         description: <div>
             <strong>Consultant at Axiell (Remote), 2021 - Present</strong><br/><br/>
             Software Engineer Contractor<br/><br/>
-            • Spearheaded the implementation and customization of Axiell’s Vital Records Management System, focusing on a Javascript frontend, C# backend, and integration with SQL Server and Oracle databases.<br/>
-            • Pioneered the system&apos;s first international deployment in Canada, managing geographic and data management adaptations, including enhanced granularity for death records and new statistical analysis features.<br/>
-            • Contributed to Azure pipeline development and CI/CD configurations, optimizing deployment and update processes.<br/><br/>
+            • Spearheaded the implementation and customization of Axiell’s Vital Records Management System, focusing on
+            a Javascript frontend, C# backend, and integration with SQL Server and Oracle databases.<br/>
+            • Pioneered the system&apos;s first international deployment in Canada, managing geographic and data
+            management adaptations, including enhanced granularity for death records and new statistical analysis
+            features.<br/>
+            • Contributed to Azure pipeline development and CI/CD configurations, optimizing deployment and update
+            processes.<br/><br/>
         </div>
     },
     {
@@ -31,9 +35,12 @@ const logos = [
         description: <div>
             <strong>Consultant at Norwegian Cruise Lines (Remote), 2023</strong><br/><br/>
             Software Engineer Contractor<br/><br/>
-            • Key contributor in modernizing the Oceania Cruises e-commerce website, focusing on user experience and performance enhancements.<br/>
-            • Utilized modern development tools and languages (Vue.js, Angular, C#, Scala) alongside SQL and NoSQL databases to revamp the sales platform.<br/>
-            • Achieved significant improvements in online system speed and usability, enhancing the customer shopping experience.<br/><br/>
+            • Key contributor in modernizing the Oceania Cruises e-commerce website, focusing on user experience and
+            performance enhancements.<br/>
+            • Utilized modern development tools and languages (Vue.js, Angular, C#, Scala) alongside SQL and NoSQL
+            databases to revamp the sales platform.<br/>
+            • Achieved significant improvements in online system speed and usability, enhancing the customer shopping
+            experience.<br/><br/>
         </div>
     },
     {
@@ -43,9 +50,12 @@ const logos = [
         description: <div>
             <strong>IBM (Remote), 2019 - 2020</strong><br/><br/>
             Software Engineer<br/><br/>
-            • Enhanced customer engagement by refining the Guided Selling Tool for Sprint stores, contributing to sales increases.<br/>
-            • Played an integral role in the Sprint and T-Mobile merger, focusing on backend system unification and UI/UX revamp.<br/>
-            • Demonstrated full-stack development expertise, contributing to both user interface and backend functionalities.<br/><br/>
+            • Enhanced customer engagement by refining the Guided Selling Tool for Sprint stores, contributing to sales
+            increases.<br/>
+            • Played an integral role in the Sprint and T-Mobile merger, focusing on backend system unification and
+            UI/UX revamp.<br/>
+            • Demonstrated full-stack development expertise, contributing to both user interface and backend
+            functionalities.<br/><br/>
         </div>
     },
     {
@@ -67,7 +77,8 @@ const logos = [
         description: <div>
             <strong>Independent Contractor at Article (Remote), 2020</strong><br/><br/>
             Software Engineer<br/><br/>
-            • Co-developed new software tools to enhance the e-commerce platform&apos;s functionality and efficiency using Vue.js, Node.js, Java, Spring Boot, Kafka, and Postgres.<br/>
+            • Co-developed new software tools to enhance the e-commerce platform&apos;s functionality and efficiency
+            using Vue.js, Node.js, Java, Spring Boot, Kafka, and Postgres.<br/>
             • Contributed to the financial information system overhaul, improving accuracy and efficiency.<br/>
             • Developed robust backend systems, enhancing the customer furniture purchasing experience.<br/><br/>
         </div>
@@ -80,8 +91,10 @@ const logos = [
             <strong>B2W, 2018 - 2019</strong><br/><br/>
             Software Engineer<br/><br/>
             • Led the development of diverse e-commerce systems, improving the online shopping experience.<br/>
-            • Initiated internal tool development to streamline operations, fostering a collaborative work environment.<br/>
-            • Managed a suite of Java, Groovy, Python, and Node.js microservices, ensuring efficient operations.<br/><br/>
+            • Initiated internal tool development to streamline operations, fostering a collaborative work
+            environment.<br/>
+            • Managed a suite of Java, Groovy, Python, and Node.js microservices, ensuring efficient
+            operations.<br/><br/>
         </div>
     },
     {
@@ -91,7 +104,8 @@ const logos = [
         description: <div>
             <strong>Águas do Brasil Group, 2017</strong><br/><br/>
             Software Developer<br/><br/>
-            • Led the CRM system development using C#, ASP.NET, and front-end technologies, essential for billing operations.<br/>
+            • Led the CRM system development using C#, ASP.NET, and front-end technologies, essential for billing
+            operations.<br/>
             • Regularly enhanced system features to balance business needs with customer satisfaction.<br/><br/>
         </div>
     },

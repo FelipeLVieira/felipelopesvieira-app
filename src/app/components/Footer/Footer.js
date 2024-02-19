@@ -1,6 +1,5 @@
 "use client";
 import {motion} from 'framer-motion';
-import Image from "next/legacy/image";
 import styles from "@/app/styles/Footer.css"; // Ensure the path matches your file structure
 
 export default function Footer() {
