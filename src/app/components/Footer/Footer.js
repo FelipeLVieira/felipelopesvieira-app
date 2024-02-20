@@ -18,7 +18,7 @@ export default function Footer() {
             <div className={`footer-content ${styles.footerContent}`}>
                 <p className={`footer-text ${styles.footerText}`}>&copy; {new Date().getFullYear()} felipelopesvieira.com.
                     All rights reserved.</p>
-                <p className={`footer-text ${styles.footerText}`}>Made with Next.JS, Vercel, Tailwind, and Framer
+                <p className={`footer-text ${styles.footerText}`}>Made with Next.JS, Vercel, Tailwind and Framer
                     Motion</p>
                 <div className={`footer-icons ${styles.footerIcons}`}>
                     {/* Include your icons here, wrapped with the Image component */}
