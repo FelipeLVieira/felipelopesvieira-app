@@ -19,13 +19,11 @@ const logos = [
         description: <div>
             <strong>Consultant at Axiell (Remote), 2021 - Present</strong><br/><br/>
             Software Engineer Contractor<br/><br/>
-            • Spearheaded the implementation and customization of Axiell’s Vital Records Management System, focusing on
-            a Javascript frontend, C# backend, and integration with SQL Server and Oracle databases.<br/>
-            • Pioneered the system&apos;s first international deployment in Canada, managing geographic and data
-            management adaptations, including enhanced granularity for death records and new statistical analysis
-            features.<br/>
-            • Contributed to Azure pipeline development and CI/CD configurations, optimizing deployment and update
-            processes.<br/><br/>
+            • Orchestrated the customization and enhancement of Axiell’s Vital Records Management System, focusing on
+            JavaScript for frontend development and C# for backend services, alongside database integrations with SQL Server and Oracle.<br/>
+            • Initiated the system's international adaptation for the Canadian market, focusing on data management
+            enhancements and statistical analysis features for death records.<br/>
+            • Advanced the CI/CD pipeline development using Azure, optimizing software deployment processes.<br/><br/>
         </div>
     },
     {
@@ -35,12 +33,10 @@ const logos = [
         description: <div>
             <strong>Consultant at Norwegian Cruise Lines (Remote), 2023</strong><br/><br/>
             Software Engineer Contractor<br/><br/>
-            • Key contributor in modernizing the Oceania Cruises e-commerce website, focusing on user experience and
-            performance enhancements.<br/>
-            • Utilized modern development tools and languages (Vue.js, Angular, C#, Scala) alongside SQL and NoSQL
-            databases to revamp the sales platform.<br/>
-            • Achieved significant improvements in online system speed and usability, enhancing the customer shopping
-            experience.<br/><br/>
+            • Central to the Oceania Cruises e-commerce platform's modernization, enhancing user experience and
+            system performance.<br/>
+            • Employed a tech stack including Vue.js, Angular, C#, and Scala for database enhancements with both SQL and NoSQL technologies.<br/>
+            • Realized significant improvements in system usability and speed, elevating the customer's online engagement.<br/><br/>
         </div>
     },
     {
@@ -50,12 +46,9 @@ const logos = [
         description: <div>
             <strong>IBM (Remote), 2019 - 2020</strong><br/><br/>
             Software Engineer<br/><br/>
-            • Enhanced customer engagement by refining the Guided Selling Tool for Sprint stores, contributing to sales
-            increases.<br/>
-            • Played an integral role in the Sprint and T-Mobile merger, focusing on backend system unification and
-            UI/UX revamp.<br/>
-            • Demonstrated full-stack development expertise, contributing to both user interface and backend
-            functionalities.<br/><br/>
+            • Contributed to customer engagement improvements through the Guided Selling Tool for Sprint stores, aiding in sales growth.<br/>
+            • Supported the Sprint and T-Mobile merger by integrating backend systems and enhancing UI/UX for a seamless customer experience.<br/>
+            • Showcased full-stack development proficiency, enhancing both user interface and backend system functionalities.<br/><br/>
         </div>
     },
     {
@@ -65,9 +58,9 @@ const logos = [
         description: <div>
             <strong>Independent Contractor at Healthgrades (Remote), 2020 - 2021</strong><br/><br/>
             Software Engineer<br/><br/>
-            • Led Salesforce integration within the patient-doctor engagement process, optimizing interactions.<br/>
-            • Employed AWS services and Jenkins to enhance system efficiency and reliability.<br/>
-            • Improved patient access to healthcare providers, contributing to a more user-centric platform.<br/><br/>
+            • Facilitated Salesforce integration to streamline the patient-doctor interaction, optimizing platform engagement.<br/>
+            • Implemented AWS services for system reliability and efficiency, leveraging Jenkins for continuous integration.<br/>
+            • Enhanced accessibility for patients to connect with healthcare providers, enriching the platform's user experience.<br/><br/>
         </div>
     },
     {
@@ -77,10 +70,9 @@ const logos = [
         description: <div>
             <strong>Independent Contractor at Article (Remote), 2020</strong><br/><br/>
             Software Engineer<br/><br/>
-            • Co-developed new software tools to enhance the e-commerce platform&apos;s functionality and efficiency
-            using Vue.js, Node.js, Java, Spring Boot, Kafka, and Postgres.<br/>
-            • Contributed to the financial information system overhaul, improving accuracy and efficiency.<br/>
-            • Developed robust backend systems, enhancing the customer furniture purchasing experience.<br/><br/>
+            • Co-engineered enhancements to the e-commerce platform's efficiency and functionality using Vue.js, Node.js, Java, Spring Boot, Kafka, and Postgres.<br/>
+            • Participated in the financial information system's revamp for improved operational accuracy and efficiency.<br/>
+            • Developed advanced backend systems for an improved furniture purchasing process, directly impacting customer satisfaction.<br/><br/>
         </div>
     },
     {
@@ -90,11 +82,9 @@ const logos = [
         description: <div>
             <strong>B2W, 2018 - 2019</strong><br/><br/>
             Software Engineer<br/><br/>
-            • Led the development of diverse e-commerce systems, improving the online shopping experience.<br/>
-            • Initiated internal tool development to streamline operations, fostering a collaborative work
-            environment.<br/>
-            • Managed a suite of Java, Groovy, Python, and Node.js microservices, ensuring efficient
-            operations.<br/><br/>
+            • Contributed to the development of innovative e-commerce solutions, enhancing user experience across online shopping platforms.<br/>
+            • Initiated the creation of internal tools to streamline operational efficiency, promoting a culture of continuous improvement.<br/>
+            • Oversaw a portfolio of microservices using Java, Groovy, Python, and Node.js, ensuring high operational performance.<br/><br/>
         </div>
     },
     {
@@ -104,12 +94,12 @@ const logos = [
         description: <div>
             <strong>Águas do Brasil Group, 2017</strong><br/><br/>
             Software Developer<br/><br/>
-            • Led the CRM system development using C#, ASP.NET, and front-end technologies, essential for billing
-            operations.<br/>
-            • Regularly enhanced system features to balance business needs with customer satisfaction.<br/><br/>
+            • Spearheaded the development of the CRM system with C#, ASP.NET, focusing on enhancing billing and customer management capabilities.<br/>
+            • Actively engaged in system feature enhancements to meet evolving business and customer satisfaction goals.<br/><br/>
         </div>
     },
 ];
+
 
 
 const LogoGrid = ({isTypingComplete}) => {
