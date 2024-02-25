@@ -19,9 +19,9 @@ const logos = [
         description: <div>
             <strong>Consultant at Axiell (Remote), 2021 - Present</strong><br/><br/>
             Software Engineer Contractor<br/><br/>
-            • Orchestrated the customization and enhancement of Axiell’s Vital Records Management System, focusing on
+            • Orchestrated the customization and enhancement of Axiell&apos;s Vital Records Management System, focusing on
             JavaScript for frontend development and C# for backend services, alongside database integrations with SQL Server and Oracle.<br/>
-            • Initiated the system's international adaptation for the Canadian market, focusing on data management
+            • Initiated the system&apos;s international adaptation for the Canadian market, focusing on data management
             enhancements and statistical analysis features for death records.<br/>
             • Advanced the CI/CD pipeline development using Azure, optimizing software deployment processes.<br/><br/>
         </div>
@@ -33,10 +33,10 @@ const logos = [
         description: <div>
             <strong>Consultant at Norwegian Cruise Lines (Remote), 2023</strong><br/><br/>
             Software Engineer Contractor<br/><br/>
-            • Central to the Oceania Cruises e-commerce platform's modernization, enhancing user experience and
+            • Central to the Oceania Cruises e-commerce platform&apos;s modernization, enhancing user experience and
             system performance.<br/>
             • Employed a tech stack including Vue.js, Angular, C#, and Scala for database enhancements with both SQL and NoSQL technologies.<br/>
-            • Realized significant improvements in system usability and speed, elevating the customer's online engagement.<br/><br/>
+            • Realized significant improvements in system usability and speed, elevating the customer&apos;s online engagement.<br/><br/>
         </div>
     },
     {
@@ -60,7 +60,7 @@ const logos = [
             Software Engineer<br/><br/>
             • Facilitated Salesforce integration to streamline the patient-doctor interaction, optimizing platform engagement.<br/>
             • Implemented AWS services for system reliability and efficiency, leveraging Jenkins for continuous integration.<br/>
-            • Enhanced accessibility for patients to connect with healthcare providers, enriching the platform's user experience.<br/><br/>
+            • Enhanced accessibility for patients to connect with healthcare providers, enriching the platform&apos;s user experience.<br/><br/>
         </div>
     },
     {
@@ -70,8 +70,8 @@ const logos = [
         description: <div>
             <strong>Independent Contractor at Article (Remote), 2020</strong><br/><br/>
             Software Engineer<br/><br/>
-            • Co-engineered enhancements to the e-commerce platform's efficiency and functionality using Vue.js, Node.js, Java, Spring Boot, Kafka, and Postgres.<br/>
-            • Participated in the financial information system's revamp for improved operational accuracy and efficiency.<br/>
+            • Co-engineered enhancements to the e-commerce platform&apos;s efficiency and functionality using Vue.js, Node.js, Java, Spring Boot, Kafka, and Postgres.<br/>
+            • Participated in the financial information system&apos;s revamp for improved operational accuracy and efficiency.<br/>
             • Developed advanced backend systems for an improved furniture purchasing process, directly impacting customer satisfaction.<br/><br/>
         </div>
     },
