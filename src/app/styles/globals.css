@@ -102,16 +102,44 @@ p {
     object-fit: cover;
 }
 
-.kofiWrapper {
-    /* This will style the div that the Ko-fi script will use to inject the iframe */
-    /* Add styles here to affect the wrapper, but not the contents of the iframe */
-    position: relative;
-    z-index: 10; /* Higher z-index if you need it to be on top of other elements */
-    /* Other styles as needed */
-}
+@media (max-width: 767px) {
+    .video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+    }
 
-/* If the Ko-fi script adds any elements outside of the iframe that you can target */
-.kofiOverlay {
-    /* Example style to target an element with class 'kofiOverlay' */
-    background-color: transparent !important;
+    .video-background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: cover;
+    }
+}
+@media (min-width: 768px) {
+    .video-container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .video-background {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
