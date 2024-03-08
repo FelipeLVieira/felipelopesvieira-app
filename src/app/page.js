@@ -23,7 +23,7 @@ const Home = () => {
     return (
         <>
             <div className="video-container">
-                <video autoPlay loop muted className="video-background">
+                <video autoPlay loop muted playsInline className="video-background">
                     <source src="/videos/pixel-lofi-city-moewalls-com.mp4" type="video/mp4"/>
                     Your browser does not support the video tag.
                 </video>
