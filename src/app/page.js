@@ -36,7 +36,6 @@ const Home = () => {
                 animate={isTypingComplete ? "visible" : "hidden"}
                 variants={fadeInVariants}
             >
-                {/* PhaserGame component is displayed first, followed by LogoGrid */}
                 <LogoGrid isTypingComplete={isTypingComplete}/>
             </motion.div>
         </>
