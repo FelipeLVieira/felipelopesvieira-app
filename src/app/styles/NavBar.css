@@ -28,13 +28,7 @@
   transform: scale(1.1);
 }
 
-.download-icon {
-  font-size: 1.2rem;
-  color: var(--foreground);
-  transition: color 0.3s ease-in-out, transform 0.3s ease;
-}
-
-.download-icon:hover {
+.resume-download:hover .download-icon {
   color: var(--hover-color);
   transform: scale(1.4);
 }
