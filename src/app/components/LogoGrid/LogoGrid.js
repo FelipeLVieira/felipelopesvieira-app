@@ -136,7 +136,6 @@ const LogoGrid = () => {
         exit: { opacity: 0, height: 10, transform: 'scaleY(0)', transition: { duration: 0.5 } },
     };
 
-
     const logoHoverVariants = {
         initial: { scale: 1 },
         hover: { scale: 1.1, transition: { duration: 0.3 } },
