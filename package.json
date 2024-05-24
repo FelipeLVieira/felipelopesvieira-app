@@ -12,7 +12,7 @@
     "@heroicons/react": "^2.1.1",
     "framer-motion": "^10.18.0",
     "gsap": "^3.12.5",
-    "next": "^14.0.4",
+    "next": "^14.2.3",
     "next-themes": "^0.2.1",
     "next-transpile-modules": "^10.0.1",
     "react": "^18.2.0",

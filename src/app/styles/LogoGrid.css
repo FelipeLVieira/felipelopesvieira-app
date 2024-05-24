@@ -9,7 +9,7 @@
 .logo-grid-section {
     width: 100%;
     height: 100%;
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -56,7 +56,7 @@
     margin: 1vh;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
 }
@@ -94,16 +94,16 @@
     0% {
         transform: translate(-50%, -50%) scale(0.9);
         opacity: 0;
-        box-shadow: 0 0 0 0 rgba(128, 128, 128, 0.4); /* Start with no box-shadow */
+        box-shadow: 0 0 0 0 rgba(128, 128, 128, 0.4);
     }
     50% {
         opacity: 0.7;
-        box-shadow: 0 0 0 20px rgba(128, 128, 128, 0); /* Expand the box-shadow and fade it out */
+        box-shadow: 0 0 0 20px rgba(128, 128, 128, 0);
     }
     100% {
         transform: translate(-50%, -50%) scale(1.1);
         opacity: 0;
-        box-shadow: 0 0 0 0 rgba(128, 128, 128, 0); /* End with no box-shadow */
+        box-shadow: 0 0 0 0 rgba(128, 128, 128, 0);
     }
 }
 
@@ -115,6 +115,7 @@
 
 .logo-section:hover {
     transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes shine {
@@ -138,6 +139,11 @@
     }
 }
 
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
 .detail-section {
     max-width: 800px;
     background-color: var(--detail-background-color);
@@ -146,11 +152,9 @@
     margin-top: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.detail-section p {
-    margin: 0;
+    transition: background-color 0.3s, color 0.3s, opacity 0.3s ease-out, transform 0.3s;
+    opacity: 1;
+    transform: scale(1);
 }
 
 .detail-section button {
@@ -161,9 +165,13 @@
     background-color: var(--button-background-color, #007bff);
     color: var(--button-text-color, #ffffff);
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.1s;
 }
 
 .detail-section button:hover {
     background-color: var(--button-hover-background-color, #0056b3);
+}
+
+.detail-section button:active {
+    transform: scale(0.95);
 }
