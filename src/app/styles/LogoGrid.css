@@ -23,7 +23,6 @@
     padding: 10px;
     box-sizing: border-box;
     border: 2px solid var(--secondary-color);
-    animation: glowing-border 2s infinite;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,22 +138,26 @@
     }
 }
 
-.fade-out {
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-}
-
 .detail-section {
     max-width: 800px;
     background-color: var(--detail-background-color);
     color: var(--detail-text-color);
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 0;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, color 0.3s, opacity 0.3s ease-out, transform 0.3s;
+    transition: max-height 0.5s ease, opacity 0.5s ease, margin-top 0.5s ease;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.detail-section.expanded {
+    max-height: 1000px;
     opacity: 1;
-    transform: scale(1);
+    visibility: visible;
+    margin-top: 10px; /* Adjust this value as needed */
 }
 
 .detail-section button {

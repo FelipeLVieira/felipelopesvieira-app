@@ -15,21 +15,21 @@
     height: 2em;
     line-height: 2em;
     vertical-align: middle;
-    animation-duration: 0.5s; /* Animation duration */
-    animation-timing-function: ease-out; /* Timing function */
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
     animation-fill-mode: both;
-    transition: opacity 0.3s, transform 0.3s; /* Transition for opacity and transform */
+    transition: opacity 0.3s, transform 0.3s;
 }
 
 .icon-stack-icon {
     width: 100%;
     text-align: center;
-    opacity: 1; /* Initial opacity set to 1 */
-    position: relative; /* Position for pseudo-elements */
-    animation-name: colorAnimation; /* Add infinite color animation */
-    animation-duration: 5s; /* Set animation duration */
-    animation-iteration-count: infinite; /* Make the animation infinite */
-    transition: color 0.3s ease-in-out, transform 0.3s ease; /* Smooth transition for hover effect */
+    opacity: 1;
+    position: relative;
+    animation-name: colorAnimation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    transition: color 0.3s ease-in-out, transform 0.3s ease;
 }
 
 .icon-stack-icon:hover {
@@ -59,7 +59,7 @@
     content: "";
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(90deg, transparent 0%, rgba(255, 100, 45, 0.7) 50%, transparent 100%); /* Gradient for shine effect */
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 100, 45, 0.7) 50%, transparent 100%);
     pointer-events: none; /* Disable pointer events on pseudo-elements */
     transform: translateX(-100%); /* Initial position outside of the icon */
     transition: transform 1s; /* Transition for shine animation */
