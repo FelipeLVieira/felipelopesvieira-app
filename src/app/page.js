@@ -1,12 +1,12 @@
 "use client";
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import LogoGrid from "@/app/components/LogoGrid/LogoGrid";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
 
 const fadeInVariants = {
-    hidden: {opacity: 0, y: 50},
-    visible: {opacity: 1, y: 0, transition: {duration: 1, ease: 'easeOut'}}
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: 'easeOut' } }
 };
 
 const Home = () => {
@@ -14,7 +14,7 @@ const Home = () => {
 
     useEffect(() => {
         if (isTypingComplete) {
-            // Adjust content visibility based on typing completion
+            // No scroll event listener needed since parallax effect is removed
         }
     }, [isTypingComplete]);
 
@@ -24,19 +24,19 @@ const Home = () => {
         <>
             <div className="video-container">
                 <video autoPlay loop muted playsInline className="video-background">
-                    <source src="/videos/pixel-lofi-city-moewalls-com.mp4" type="video/mp4"/>
+                    <source src="/videos/pixel-lofi-city-moewalls-com.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
 
-            <TypewriterEffect onComplete={onTypingComplete}/>
+            <TypewriterEffect onComplete={onTypingComplete} />
             <motion.div
                 className="main-container"
                 initial="hidden"
                 animate={isTypingComplete ? "visible" : "hidden"}
                 variants={fadeInVariants}
             >
-                <LogoGrid isTypingComplete={isTypingComplete}/>
+                <LogoGrid isTypingComplete={isTypingComplete} />
             </motion.div>
         </>
     );
