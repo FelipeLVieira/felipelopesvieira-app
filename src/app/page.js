@@ -1,7 +1,7 @@
 "use client";
 import { motion } from 'framer-motion';
 import LogoGrid from "@/app/components/LogoGrid/LogoGrid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
 
 const fadeInVariants = {
@@ -11,12 +11,6 @@ const fadeInVariants = {
 
 const Home = () => {
     const [isTypingComplete, setIsTypingComplete] = useState(false);
-
-    useEffect(() => {
-        if (isTypingComplete) {
-            // No scroll event listener needed since parallax effect is removed
-        }
-    }, [isTypingComplete]);
 
     const onTypingComplete = () => setIsTypingComplete(true);
 
