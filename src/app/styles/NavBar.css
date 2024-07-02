@@ -1,9 +1,13 @@
+/* NavBar.css */
 .navbar {
   background-color: var(--secondary-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .nav-links {

@@ -1,20 +1,21 @@
 /* Footer.css */
 .footer {
-    height: 100%;
-    width: 100vw;
-    opacity: 1;
+    width: 100%;
     display: flex;
     padding: 2rem 0;
     border-top: 5px solid;
     border-image: linear-gradient(to right, var(--primary-color), var(--secondary-color)) 2;
     background-color: var(--footer-background);
     color: var(--footer-foreground);
+    position: relative;
+    z-index: 2;
 }
 
 .footer-content {
-    height: 80px;
-    opacity: 1;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -22,7 +23,7 @@
 }
 
 .footer-text {
-    font-family: var(--font-family);
+    font-family: var(--font-family), serif;
     text-align: center;
     margin: 0;
     color: inherit;
@@ -38,6 +39,6 @@
 }
 
 [data-theme='dark'] .footer {
-    --footer-background: #333; /* Dark theme background */
-    --footer-foreground: #f0f0f0; /* Dark theme text */
+    --footer-background: #333;
+    --footer-foreground: #f0f0f0;
 }

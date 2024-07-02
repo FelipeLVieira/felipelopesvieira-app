@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import LogoGrid from "@/app/components/LogoGrid/LogoGrid";
 import { useState } from "react";
 import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
+import NavBar from "@/app/components/navigation/NavBar";
+import Footer from "@/app/components/Footer/Footer";
 
 const fadeInVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -23,6 +25,8 @@ const Home = () => {
                 </video>
             </div>
 
+            <NavBar />
+
             <TypewriterEffect onComplete={onTypingComplete} />
             <motion.div
                 className="main-container"
@@ -32,6 +36,8 @@ const Home = () => {
             >
                 <LogoGrid isTypingComplete={isTypingComplete} />
             </motion.div>
+
+            <Footer />
         </>
     );
 };
