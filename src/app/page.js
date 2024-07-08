@@ -1,7 +1,7 @@
 "use client";
 import { motion } from 'framer-motion';
 import LogoGrid from "@/app/components/LogoGrid/LogoGrid";
-import { useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
 import NavBar from "@/app/components/navigation/NavBar";
 import Footer from "@/app/components/Footer/Footer";
@@ -13,19 +13,38 @@ const fadeInVariants = {
 
 const Home = () => {
     const [isTypingComplete, setIsTypingComplete] = useState(false);
+    const [isFadingOut, setIsFadingOut] = useState(false);
+    const videoRef = useRef(null);
 
     const onTypingComplete = () => setIsTypingComplete(true);
+
+    useEffect(() => {
+        const handleVideoEnd = () => {
+            setIsFadingOut(true);
+            setTimeout(() => {
+                videoRef.current.currentTime = 0;
+                videoRef.current.play();
+                setIsFadingOut(false);
+            }, 1000); // Match this duration with your CSS transition duration
+        };
+
+        const videoElement = videoRef.current;
+        videoElement.addEventListener('ended', handleVideoEnd);
+
+        return () => {
+            videoElement.removeEventListener('ended', handleVideoEnd);
+        };
+    }, []);
 
     return (
         <>
             <div className="video-container">
                 <video
+                    ref={videoRef}
                     autoPlay
-                    loop
                     muted
                     playsInline
-                    className="video-background"
-                    onEnded={(e) => e.target.classList.add('fade-out')}
+                    className={`video-background ${isFadingOut ? 'fade-out' : ''}`}
                 >
                     <source src="/videos/pixel-lofi-city-moewalls-com.mp4" type="video/mp4"/>
                     Your browser does not support the video tag.
@@ -41,10 +60,10 @@ const Home = () => {
                 animate={isTypingComplete ? "visible" : "hidden"}
                 variants={fadeInVariants}
             >
-                <LogoGrid isTypingComplete={isTypingComplete} />
+                <LogoGrid isTypingComplete={isTypingComplete}/>
             </motion.div>
 
-            <Footer />
+            <Footer/>
         </>
     );
 };

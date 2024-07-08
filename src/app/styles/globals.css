@@ -100,11 +100,7 @@ p {
 }
 
 .video-background.fade-out {
-  opacity: 0;
-}
-
-.video-background.fade-in {
-  opacity: 0;
+    opacity: 0;
 }
 
 nav, footer {
