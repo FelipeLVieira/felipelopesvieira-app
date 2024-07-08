@@ -96,6 +96,15 @@ p {
     position: absolute;
     top: 0;
     left: 0;
+    transition: opacity 1s ease-out;
+}
+
+.video-background.fade-out {
+  opacity: 0;
+}
+
+.video-background.fade-in {
+  opacity: 0;
 }
 
 nav, footer {

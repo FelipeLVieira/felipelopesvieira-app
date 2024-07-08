@@ -19,15 +19,22 @@ const Home = () => {
     return (
         <>
             <div className="video-container">
-                <video autoPlay loop muted playsInline className="video-background">
-                    <source src="/videos/pixel-lofi-city-moewalls-com.mp4" type="video/mp4" />
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="video-background"
+                    onEnded={(e) => e.target.classList.add('fade-out')}
+                >
+                    <source src="/videos/pixel-lofi-city-moewalls-com.mp4" type="video/mp4"/>
                     Your browser does not support the video tag.
                 </video>
             </div>
 
-            <NavBar />
+            <NavBar/>
 
-            <TypewriterEffect onComplete={onTypingComplete} />
+            <TypewriterEffect onComplete={onTypingComplete}/>
             <motion.div
                 className="main-container"
                 initial="hidden"
