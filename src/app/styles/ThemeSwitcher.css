@@ -37,7 +37,6 @@
     transform: scale(1.4); /* Slightly increase the icon size */
 }
 
-
 @keyframes colorAnimation {
     0% {
         color: #ffffff; /* Initial color */
@@ -65,9 +64,20 @@
     transition: transform 1s; /* Transition for shine animation */
 }
 
-
 .icon-stack-1x,
 .icon-stack-2x {
     width: 100%;
     text-align: center;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .theme-switcher-container {
+        padding: 5px;
+    }
+
+    .icon-stack {
+        width: 1.5em;
+        height: 1.5em;
+    }
 }
