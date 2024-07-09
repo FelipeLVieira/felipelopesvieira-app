@@ -2,7 +2,7 @@
 .navbar {
   background-color: var(--secondary-color);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 15px;
   width: 100%;
@@ -10,10 +10,19 @@
   z-index: 2;
 }
 
+.nav-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 2rem;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .resume-download {
@@ -40,6 +49,7 @@
 .social-links {
   display: flex;
   align-items: center;
+  gap: 1.5rem;
 }
 
 .social-icon {
@@ -53,4 +63,16 @@
 .social-icon:hover {
   color: var(--hover-color);
   transform: scale(1.4);
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 16px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
 }
