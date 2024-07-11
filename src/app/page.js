@@ -1,5 +1,5 @@
 "use client";
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 import LogoGrid from "@/app/components/LogoGrid/LogoGrid";
 import {useEffect, useRef, useState} from "react";
 import TypewriterEffect from "@/app/components/TypewriterEffect/TypewriterEffect";
@@ -7,8 +7,8 @@ import NavBar from "@/app/components/navigation/NavBar";
 import Footer from "@/app/components/Footer/Footer";
 
 const fadeInVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: 'easeOut' } }
+    hidden: {opacity: 0, y: 50},
+    visible: {opacity: 1, y: 0, transition: {duration: 1, ease: 'easeOut'}}
 };
 
 const Home = () => {
