@@ -1,5 +1,3 @@
-// src/components/NavBar.js
-
 "use client";
 import ThemeSwitcher from "@/app/components/navigation/ThemeSwitcher";
 import "@/app/styles/NavBar.css";
