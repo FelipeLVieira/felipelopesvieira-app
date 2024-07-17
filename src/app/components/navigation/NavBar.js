@@ -3,7 +3,7 @@
 "use client";
 import ThemeSwitcher from "@/app/components/navigation/ThemeSwitcher";
 import "@/app/styles/NavBar.css";
-import {FaGithub, FaLinkedinIn, FaDownload} from "react-icons/fa";
+import {FaDownload, FaGithub, FaLinkedinIn} from "react-icons/fa";
 import {useEffect, useState} from "react";
 import Image from 'next/image';
 
@@ -18,7 +18,8 @@ const NavBar = () => {
             try {
                 const response = await fetch(apiUrl);
                 const data = await response.json();
-                if (data && data.main && data?.weather) {
+                const {weather: weather1, main} = data;
+                if (data && main && weather1) {
                     setWeather(data);
                 }
             } catch (err) {
@@ -26,14 +27,11 @@ const NavBar = () => {
             }
         };
 
-        if (navigator.geolocation) {
+        if (typeof window !== 'undefined' && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    const {latitude, longitude} = position.coords;
+                    const { latitude, longitude } = position.coords;
                     fetchWeatherData(latitude, longitude);
-                },
-                () => {
-                    setError("Error getting location");
                 }
             );
         } else {
@@ -49,7 +47,7 @@ const NavBar = () => {
                 <div className="nav-links">
                     <a href="/assets/resume.pdf" download className="resume-download">
                         Download Resume
-                        <FaDownload className="download-icon"/>
+                        <FaDownload className="download-icon" />
                     </a>
                     <div className="social-links">
                         <a
@@ -57,14 +55,14 @@ const NavBar = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <FaLinkedinIn className="social-icon"/>
+                            <FaLinkedinIn className="social-icon" />
                         </a>
                         <a
                             href="https://github.com/FelipeLVieira"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <FaGithub className="social-icon"/>
+                            <FaGithub className="social-icon" />
                         </a>
                     </div>
                 </div>
@@ -72,8 +70,8 @@ const NavBar = () => {
                     <div className="weather-info">
                         <span>{weather.name}</span>
                         <span>
-              {weather.main.temp} °C - {convertToFahrenheit(weather.main.temp).toFixed(2)} °F
-            </span>
+                            {weather.main.temp} °C - {convertToFahrenheit(weather.main.temp).toFixed(2)} °F
+                        </span>
                         <Image
                             src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
                             alt={weather.weather[0].description}
@@ -83,7 +81,7 @@ const NavBar = () => {
                         />
                     </div>
                 )}
-                <ThemeSwitcher/>
+                <ThemeSwitcher />
             </div>
             {error && <div className="error">{error}</div>}
         </div>
