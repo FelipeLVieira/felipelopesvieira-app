@@ -1,34 +1,34 @@
 :root {
-    --background: #000000; /* Light mode background */
-    --foreground: #2d2d2d; /* Light mode text */
-    --primary-color: #cbcbcb; /* Light mode primary color */
-    --secondary-color: #3ea5ff; /* Light mode secondary color */
+    --background: #000000;
+    --foreground: #2d2d2d;
+    --primary-color: #cbcbcb;
+    --secondary-color: #3ea5ff;
     --font-family: 'Arial', sans-serif;
     --transition-duration: 0.5s;
-    --footer-background: #edeaea; /* Light theme background */
-    --footer-foreground: #3c3c3c; /* Light theme text */
-    --detail-background-color: #ffffff; /* Light background for the detail section */
-    --detail-text-color: #000000; /* Dark text color for readability */
-    --hover-color: #ffffff; /* Light mode hover color */
-    --button-background-color: #007bff; /* Button background */
-    --button-text-color: #ffffff; /* Button text color */
-    --button-hover-background-color: #0056b3; /* Button hover background */
-    --background-transparent: rgba(240, 240, 240, 0.5); /* Example with light theme */
+    --footer-background: #edeaea;
+    --footer-foreground: #3c3c3c;
+    --detail-background-color: #ffffff;
+    --detail-text-color: #000000;
+    --hover-color: #ffffff;
+    --button-background-color: #007bff;
+    --button-text-color: #ffffff;
+    --button-hover-background-color: #0056b3;
+    --background-transparent: rgba(240, 240, 240, 0.5);
 }
 
 [data-theme='dark'] {
-    --background: #121212; /* Dark mode background */
-    --foreground: #e0e0e0; /* Dark mode text */
-    --primary-color: #363636; /* Dark mode primary color */
-    --secondary-color: #004178; /* Dark mode secondary color */
-    --footer-background: #000000; /* Light theme background */
-    --footer-foreground: #e0e0e0; /* Light theme text */
-    --detail-background-color: #2f2f2f; /* Dark background for the detail section */
-    --detail-text-color: #e0e0e0; /* Light text color for readability */
-    --hover-color: #8051fe; /* Dark mode hover color */
-    --button-background-color: #8051fe; /* Button background */
-    --button-hover-background-color: #5a2eeb; /* Darker on hover */
-    --background-transparent: rgba(0, 0, 0, 0.5); /* Example with light theme */
+    --background: #121212;
+    --foreground: #e0e0e0;
+    --primary-color: #363636;
+    --secondary-color: #004178;
+    --footer-background: #000000;
+    --footer-foreground: #e0e0e0;
+    --detail-background-color: #2f2f2f;
+    --detail-text-color: #e0e0e0;
+    --hover-color: #8051fe;
+    --button-background-color: #8051fe;
+    --button-hover-background-color: #5a2eeb;
+    --background-transparent: rgba(0, 0, 0, 0.5);
 }
 
 .logo-grid-section {
@@ -78,6 +78,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2rem; /* Added padding to main-container to prevent overlap */
 }
 
 .video-container {

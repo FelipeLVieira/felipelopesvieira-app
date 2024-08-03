@@ -11,7 +11,6 @@ import Image from "next/legacy/image";
 import {useState} from "react";
 import '@/app/styles/LogoGrid.css';
 
-
 const LogoGrid = () => {
     const [expandedLogos, setExpandedLogos] = useState({});
 
@@ -113,8 +112,6 @@ const LogoGrid = () => {
                 ReactJS<br/>
                 • Implemented a distributed caching layer using Redis to improve application responsiveness and reduce
                 database load<br/>
-                • Designed and developed a recommendation engine using collaborative filtering and machine learning
-                techniques (Python, scikit-learn) to personalize user experience<br/>
                 • Contributed to the adoption of a continuous deployment pipeline using Jenkins, Ansible, and
                 Kubernetes, significantly reducing time-to-market for new features<br/><br/>
             </div>

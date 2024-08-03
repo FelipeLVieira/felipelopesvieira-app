@@ -39,16 +39,20 @@ const Home = () => {
     return (
         <>
             <div className="video-container">
-                <video
+                <motion.video
                     ref={videoRef}
                     autoPlay
                     muted
                     playsInline
                     className={`video-background ${isFadingOut ? 'fade-out' : ''}`}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 0.5}}
                 >
                     <source src="/videos/pixel-lofi-city-moewalls-com.mp4" type="video/mp4"/>
                     Your browser does not support the video tag.
-                </video>
+                </motion.video>
             </div>
 
             <NavBar/>

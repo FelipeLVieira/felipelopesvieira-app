@@ -28,7 +28,7 @@ const NavBar = () => {
         if (typeof window !== 'undefined' && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    const { latitude, longitude } = position.coords;
+                    const {latitude, longitude} = position.coords;
                     fetchWeatherData(latitude, longitude);
                 }
             );
@@ -45,7 +45,7 @@ const NavBar = () => {
                 <div className="nav-links">
                     <a href="/assets/resume.pdf" download className="resume-download">
                         Download Resume
-                        <FaDownload className="download-icon" />
+                        <FaDownload className="download-icon"/>
                     </a>
                     <div className="social-links">
                         <a
@@ -53,14 +53,14 @@ const NavBar = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <FaLinkedinIn className="social-icon" />
+                            <FaLinkedinIn className="social-icon"/>
                         </a>
                         <a
                             href="https://github.com/FelipeLVieira"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <FaGithub className="social-icon" />
+                            <FaGithub className="social-icon"/>
                         </a>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ const NavBar = () => {
                         />
                     </div>
                 )}
-                <ThemeSwitcher />
+                <ThemeSwitcher/>
             </div>
             {error && <div className="error">{error}</div>}
         </div>
